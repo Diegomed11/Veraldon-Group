@@ -77,11 +77,13 @@ body {
   text-wrap: balance;
 }
 
-/* Etiquetas en monoespaciada, como las fichas técnicas. */
+/* Etiquetas pequeñas en la misma sans de la marca, en versalitas espaciadas. */
 .mono {
-  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-family: var(--font-archivo), system-ui, sans-serif;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-stretch: 112%;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.5;
 }

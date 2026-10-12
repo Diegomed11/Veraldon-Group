@@ -21,7 +21,7 @@ export default function Home() {
       <Process />
       <Faq />
 
-      <section id="contacto" className="px-3 pb-24 md:px-6 md:pb-36">
+      <section id="contacto" className="px-3 pb-24 md:px-6 md:pb-28">
         <div className="mx-auto grid max-w-[1440px] gap-12 rounded-[28px] bg-paper px-6 py-12 text-paper-ink md:px-14 md:py-20 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <p className="mono text-paper-ink/60">Contacto</p>

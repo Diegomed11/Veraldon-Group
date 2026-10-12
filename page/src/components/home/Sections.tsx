@@ -3,16 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import { audiences, differentiators, faqs, norms, notDone, offers, principles, starts, steps, tools } from "@/content/site";
-import { MaskLines, Rise, Scramble, ScrollWords } from "@/components/motion/primitives";
+import { MaskLines, Rise, ScrollWords } from "@/components/motion/primitives";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const wrap = "mx-auto max-w-[1440px] px-5 md:px-10";
 
-function Heading({ label, lines, className = "" }: { label: string; lines: string[]; className?: string }) {
+// La etiqueta solo va donde sirve para ubicarse (las secciones del menú).
+function Heading({ label, lines, className = "" }: { label?: string; lines: string[]; className?: string }) {
   return (
     <div className={className}>
-      <Scramble text={label} className="text-fog" />
-      <MaskLines lines={lines} className="display mt-5 text-[clamp(28px,4.2vw,60px)]" />
+      {label && <p className="mono mb-5 text-fog">{label}</p>}
+      <MaskLines lines={lines} className="display text-[clamp(28px,4.2vw,60px)]" />
     </div>
   );
 }
@@ -54,29 +55,30 @@ export function Starts() {
   );
 }
 
+// Dos ofertas especializadas como filas editoriales, para no repetir la tarjeta de arriba.
 export function Offers() {
   return (
-    <section className={`${wrap} pb-24 md:pb-36`}>
-      <div className="grid gap-4 md:grid-cols-2">
-        {offers.map((o, i) => (
-          <Rise key={o.title} delay={i * 0.1}>
-            <article className="flex h-full flex-col rounded-[24px] bg-panel-2 p-7 md:p-10">
-              <p className="mono text-fog">{o.for}</p>
-              <h3 className="display mt-8 text-[clamp(22px,2.2vw,32px)]">{o.title}</h3>
-              <p className="mt-4 max-w-[54ch] text-mist">{o.text}</p>
-            </article>
-          </Rise>
-        ))}
-      </div>
+    <section className={`${wrap} pt-14 pb-16 md:pt-16 md:pb-24`}>
+      {offers.map((o, i) => (
+        <Rise key={o.title} delay={i * 0.08}>
+          <article className="grid gap-4 border-t border-rule py-10 md:grid-cols-[1fr_1.3fr] md:gap-12 md:py-14">
+            <div>
+              <p className="text-fog">{o.for}</p>
+              <h3 className="display mt-3 text-[clamp(24px,2.8vw,40px)]">{o.title}</h3>
+            </div>
+            <p className="max-w-[58ch] text-lg text-mist md:pt-9">{o.text}</p>
+          </article>
+        </Rise>
+      ))}
     </section>
   );
 }
 
 export function Audiences() {
   return (
-    <section className="border-t border-rule py-24 md:py-36">
+    <section className="border-t border-rule py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
-        <Heading label="Para quién" lines={["Empresas que deben", "demostrar sus controles"]} />
+        <Heading lines={["Empresas que deben", "demostrar sus controles"]} />
         <ul className="border-t border-rule">
           {audiences.map((a, i) => (
             <motion.li
@@ -186,9 +188,9 @@ export function Principles() {
 
 export function Differentiators() {
   return (
-    <section className="py-24 md:py-36">
+    <section className="py-20 md:py-28">
       <div className={wrap}>
-        <Heading label="Por qué Veraldon" lines={["Ingeniería y cumplimiento", "en la misma casa"]} />
+        <Heading lines={["Ingeniería y cumplimiento", "en la misma casa"]} />
         <div className="mt-14 grid border-t border-rule sm:grid-cols-2 lg:grid-cols-5">
           {differentiators.map((d, i) => (
             <Rise key={d.title} delay={i * 0.06} className="border-b border-rule py-7 sm:pr-8 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
@@ -236,7 +238,7 @@ export function Process() {
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="como" className="py-24 md:py-36">
+    <section id="como" className="py-20 md:py-28">
       <div className={`${wrap} grid gap-14 lg:grid-cols-[1fr_1.4fr]`}>
         <div className="lg:sticky lg:top-32 lg:self-start">
           <Heading label="Cómo trabajamos" lines={["Primero la conversación,", "después el proyecto"]} />
@@ -264,9 +266,9 @@ export function Process() {
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="preguntas" className="py-24 md:py-36">
+    <section id="preguntas" className="py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
-        <Heading label="Preguntas" lines={["Lo que suelen", "preguntarnos"]} />
+        <Heading lines={["Lo que suelen", "preguntarnos"]} />
         <div className="border-t border-rule">
           {faqs.map((f, i) => {
             const isOpen = open === i;
