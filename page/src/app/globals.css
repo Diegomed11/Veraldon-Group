@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/*
+  Veraldon. Negro absoluto como en una sala de exhibición, texto platino,
+  un solo acento frío para lo que está "verificado". El sitio es oscuro siempre.
+*/
+:root {
+  --ground: #000000;
+  --panel: #0d0f12;
+  --panel-2: #15181c;
+  --rule: #24282e;
+  --fog: #8d939c;
+  --mist: #c4c8ce;
+  --platinum: #eceef0;
+  --signal: #8fb3d9;
+  --paper: #e9eaec;
+  --paper-ink: #0d0f12;
+  --paper-rule: #c9ccd1;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-rule: var(--rule);
+  --color-fog: var(--fog);
+  --color-mist: var(--mist);
+  --color-platinum: var(--platinum);
+  --color-signal: var(--signal);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-paper-rule: var(--paper-rule);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-plex-mono);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background: var(--ground);
+}
+
+/* Lenis maneja el desplazamiento suave; sin él, el navegador hace el suyo. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--ground);
+  color: var(--platinum);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--platinum);
+  color: var(--ground);
+}
+
+@layer components {
+/* Titulares en Archivo expandido, el gesto principal de la marca. */
+.display {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-stretch: 125%;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+/* Etiquetas en monoespaciada, como las fichas técnicas. */
+.mono {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+}
+
+:focus-visible {
+  outline: 1px solid var(--platinum);
+  outline-offset: 4px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
