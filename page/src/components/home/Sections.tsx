@@ -12,7 +12,7 @@ const wrap = "mx-auto max-w-[1440px] px-5 md:px-10";
 function Heading({ label, lines, className = "" }: { label?: string; lines: string[]; className?: string }) {
   return (
     <div className={className}>
-      {label && <p className="mono mb-5 text-fog">{label}</p>}
+      {label && <p className="label mb-5 text-fog">{label}</p>}
       <MaskLines lines={lines} className="display text-[clamp(28px,4.2vw,60px)]" />
     </div>
   );
@@ -40,7 +40,7 @@ export function Starts() {
                   aria-hidden="true"
                   className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_39px,rgba(236,238,240,0.05)_39px_40px)] transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                 />
-                <p className="mono relative text-fog">{s.weeks}</p>
+                <p className="label relative text-fog">{s.weeks}</p>
                 <h3 className="display relative mt-5 text-[clamp(22px,2vw,30px)]">{s.title}</h3>
                 <p className="relative mt-4 mb-8 text-mist">
                   {s.text}
@@ -124,12 +124,12 @@ export function Norms() {
           {norms.map((n) => (
             <article key={n.code} className="flex h-[340px] w-[300px] shrink-0 flex-col rounded-[24px] border border-rule bg-panel p-7 md:h-[380px] md:w-[360px]">
               <p className="display text-[clamp(24px,2.4vw,32px)] leading-tight">{n.code}</p>
-              <p className="mono mt-3 text-fog">{n.title}</p>
+              <p className="label mt-3 text-fog">{n.title}</p>
               <p className="mt-auto text-mist">{n.text}</p>
             </article>
           ))}
           <article className="flex h-[340px] w-[300px] shrink-0 flex-col justify-end rounded-[24px] bg-paper p-7 text-paper-ink md:h-[380px] md:w-[360px]">
-            <p className="mono">Lo que no hacemos</p>
+            <p className="label">Lo que no hacemos</p>
             <ul className="mt-4 grid gap-2">
               {notDone.map((t) => (
                 <li key={t} className="display text-[20px] leading-snug">
@@ -157,7 +157,7 @@ export function Principles() {
     <section ref={ref} className="relative border-t border-rule" style={{ height: `${principles.length * 70}svh` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center">
         <div className={wrap}>
-          <p className="mono text-fog">Cómo nos comprometemos</p>
+          <p className="label text-fog">Cómo nos comprometemos</p>
           <div className="relative mt-8 min-h-[3.6em] text-[clamp(30px,5.4vw,80px)]">
             <AnimatePresence mode="wait">
               <motion.p
@@ -209,7 +209,7 @@ export function Tools() {
   const row = [...tools, ...tools];
   return (
     <section aria-labelledby="tools-title" className="overflow-hidden border-y border-rule py-14">
-      <p id="tools-title" className={`${wrap} mono text-fog`}>
+      <p id="tools-title" className={`${wrap} label text-fog`}>
         Herramientas con las que trabajamos
       </p>
       <ul className="sr-only">
@@ -249,7 +249,7 @@ export function Process() {
           {steps.map((s, i) => (
             <li key={s.title} className="relative pb-16 pl-12 last:pb-0">
               <span aria-hidden="true" className="absolute top-2 left-0 h-[15px] w-[15px] rounded-full border border-platinum bg-ground" />
-              <p className="mono text-fog">Paso {i + 1}</p>
+              <p className="label text-fog">Paso {i + 1}</p>
               <MaskLines as="h3" lines={[s.title]} className="display mt-3 text-[clamp(22px,2.4vw,34px)]" />
               <Rise delay={0.1}>
                 <p className="mt-3 max-w-[46ch] text-mist">{s.text}</p>

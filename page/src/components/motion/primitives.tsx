@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useScroll, useTransform, type MotionValue } from "motion/react";
 
@@ -89,36 +89,6 @@ function Word({ children, progress, range }: { children: string; progress: Motio
   );
 }
 
-// Etiqueta monoespaciada que se descifra al entrar en pantalla (adaptado de "Scramble text" de 21st.dev).
-const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/";
-export function Scramble({ text, className = "" }: { text: string; className?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const [out, setOut] = useState(text);
-  useEffect(() => {
-    if (!inView || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let frame = 0;
-    const total = 22;
-    const id = setInterval(() => {
-      frame++;
-      const done = Math.floor((frame / total) * text.length);
-      setOut(
-        text
-          .split("")
-          .map((c, i) => (i < done || c === " " ? c : glyphs[Math.floor(Math.random() * glyphs.length)]))
-          .join(""),
-      );
-      if (frame >= total) clearInterval(id);
-    }, 34);
-    return () => clearInterval(id);
-  }, [inView, text]);
-  return (
-    <span ref={ref} className={`mono ${className}`} aria-label={text}>
-      <span aria-hidden="true">{out}</span>
-    </span>
-  );
-}
-
 // Botón de contorno en píldora, como los de la vitrina: el relleno sube al pasar el cursor.
 export function PillLink({
   href,
@@ -138,7 +108,7 @@ export function PillLink({
   return (
     <Link
       href={href}
-      className={`mono group relative isolate inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full border px-6 py-3 text-center transition-colors duration-500 before:absolute before:inset-0 before:-z-10 before:translate-y-full before:rounded-full before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:before:translate-y-0 ${colors} ${className}`}
+      className={`label group relative isolate inline-flex min-h-11 items-center justify-center overflow-hidden rounded-full border px-6 py-3 text-center transition-colors duration-500 before:absolute before:inset-0 before:-z-10 before:translate-y-full before:rounded-full before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.16,1,0.3,1)] hover:before:translate-y-0 ${colors} ${className}`}
     >
       {children}
     </Link>

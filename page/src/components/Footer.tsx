@@ -37,7 +37,7 @@ export function Footer() {
         </div>
         {columns.map((c) => (
           <div key={c.title}>
-            <p className="mono text-fog">{c.title}</p>
+            <p className="label text-fog">{c.title}</p>
             <ul className="mt-4 grid gap-2 text-sm">
               {c.links.map((l) => (
                 <li key={l.href}>
@@ -50,7 +50,7 @@ export function Footer() {
           </div>
         ))}
         <div>
-          <p className="mono text-fog">Contacto</p>
+          <p className="label text-fog">Contacto</p>
           <a href={`mailto:${site.email}`} className="mt-4 block text-sm text-mist hover:text-platinum">
             {site.email}
           </a>

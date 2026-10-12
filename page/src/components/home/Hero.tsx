@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mono text-mist"
+          className="label text-mist"
         >
           Ingeniería de IA, datos y software con evidencia
         </motion.p>
@@ -109,7 +109,7 @@ export function Hero() {
         className="absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-3"
         aria-hidden="true"
       >
-        <span className="mono text-fog">Desplácese</span>
+        <span className="label text-fog">Desplácese</span>
         <span className="relative block h-10 w-px overflow-hidden bg-rule">
           <motion.span
             className="absolute inset-x-0 top-0 block h-4 bg-platinum"

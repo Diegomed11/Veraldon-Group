@@ -34,7 +34,7 @@ export function ContactForm() {
     setOpened(true);
   }
 
-  const label = "mono text-[11px] text-paper-ink/70";
+  const label = "label text-[11px] text-paper-ink/70";
   const field =
     "mt-2 w-full border-0 border-b border-paper-rule bg-transparent px-0 py-2.5 text-base text-paper-ink normal-case tracking-normal font-[family-name:var(--font-archivo)] placeholder:text-paper-ink/40 focus:border-paper-ink focus:outline-none focus:ring-0 transition-colors";
 
@@ -81,7 +81,7 @@ export function ContactForm() {
       <div className="flex flex-wrap items-center gap-5 sm:col-span-2">
         <button
           type="submit"
-          className="mono h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85"
+          className="label h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85"
         >
           Agendar conversación
         </button>

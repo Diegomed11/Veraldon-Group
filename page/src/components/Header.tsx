@@ -52,7 +52,7 @@ export function Header() {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="menu"
-            className="mono flex items-center gap-3 justify-self-start text-platinum"
+            className="label flex items-center gap-3 justify-self-start text-platinum"
           >
             <span aria-hidden="true" className="relative block h-3 w-5">
               <span className={`absolute left-0 h-px w-5 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0.5"}`} />
@@ -111,7 +111,7 @@ export function Header() {
                 className="flex flex-col gap-10 md:pt-4"
               >
                 <div>
-                  <p className="mono text-fog">Líneas de servicio</p>
+                  <p className="label text-fog">Líneas de servicio</p>
                   <ul className="mt-4 grid gap-2">
                     {serviceLines.map((s) => (
                       <li key={s.slug}>
@@ -123,7 +123,7 @@ export function Header() {
                   </ul>
                 </div>
                 <div>
-                  <p className="mono text-fog">Contacto</p>
+                  <p className="label text-fog">Contacto</p>
                   <a href={`mailto:${site.email}`} className="mt-4 block text-lg text-mist hover:text-platinum">
                     {site.email}
                   </a>

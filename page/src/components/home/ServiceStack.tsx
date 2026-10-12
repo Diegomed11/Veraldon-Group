@@ -23,7 +23,7 @@ export function ServiceStack() {
   return (
     <section id="servicios" className="relative bg-ground px-3 pt-24 pb-10 md:px-6 md:pt-36">
       <div className="mx-auto max-w-[1440px] px-2 md:px-4">
-        <p className="mono text-fog">Servicios</p>
+        <p className="label text-fog">Servicios</p>
         <MaskLines
           lines={["Cuatro líneas que se contratan", "solas o juntas"]}
           className="display mt-5 max-w-[22ch] text-[clamp(28px,4.2vw,60px)]"
@@ -57,7 +57,7 @@ function Card({ line, index, total, progress, stacked }: CardProps) {
         <div className="relative z-10 flex flex-col p-7 md:p-10">
           <div className="flex flex-wrap gap-2">
             {line.norms.map((n) => (
-              <span key={n} className="mono rounded-full border border-rule px-3 py-1 text-[11px] text-fog">
+              <span key={n} className="label rounded-full border border-rule px-3 py-1 text-[11px] text-fog">
                 {n}
               </span>
             ))}
@@ -73,7 +73,7 @@ function Card({ line, index, total, progress, stacked }: CardProps) {
           </ul>
           <div className="mt-auto flex flex-wrap items-end justify-between gap-6 pt-6">
             <p className="max-w-[40ch] text-sm text-fog">
-              <span className="mono mb-1 block text-platinum">Entrega</span>
+              <span className="label mb-1 block text-platinum">Entrega</span>
               {line.out}
             </p>
             <PillLink href={`/servicios/${line.slug}`}>Ver la línea</PillLink>
