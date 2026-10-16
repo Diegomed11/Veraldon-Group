@@ -25,10 +25,10 @@ export function ServiceStack() {
       <div className="mx-auto max-w-[1440px] px-2 md:px-4">
         <p className="label text-fog">Servicios</p>
         <MaskLines
-          lines={["Cuatro líneas que se contratan", "solas o juntas"]}
+          lines={["Cuatro líneas de trabajo", "que contrata solas o juntas"]}
           className="display mt-5 max-w-[22ch] text-[clamp(28px,4.2vw,60px)]"
         />
-        <p className="mt-6 max-w-[52ch] text-lg text-mist">Todas dejan evidencia reutilizable.</p>
+        <p className="mt-6 max-w-[52ch] text-lg text-mist">Desde el pedido que hoy se recaptura hasta la IA que atiende a sus clientes. Todas dejan evidencia reutilizable: inventario, pruebas, registros y arquitectura.</p>
       </div>
 
       <div ref={ref} className="relative mx-auto mt-16 max-w-[1440px]">

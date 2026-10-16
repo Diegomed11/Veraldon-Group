@@ -31,7 +31,7 @@ export function Starts() {
   return (
     <section id="empezar" className="pt-24 pb-4 md:pt-36">
       <div className={wrap}>
-        <Heading label="Formas de empezar" lines={["Alcance fijo,", "fechas por escrito"]} />
+        <Heading label="Formas de empezar" lines={["Tres formas de empezar", "con alcance y precio fijos"]} />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
           {starts.map((s, i) => (
             <Rise key={s.title} delay={i * 0.08} className="h-full">
@@ -78,7 +78,7 @@ export function Audiences() {
   return (
     <section className="border-t border-rule py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
-        <Heading lines={["Empresas que deben", "demostrar sus controles"]} />
+        <Heading lines={["Para quién", "construimos"]} />
         <ul className="border-t border-rule">
           {audiences.map((a, i) => (
             <motion.li
@@ -118,7 +118,7 @@ export function Norms() {
     <section id="normas" ref={ref} className="relative bg-ground" style={{ height: `calc(100svh + ${distance}px)` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
         <div className={wrap}>
-          <Heading label="Normas y marcos" lines={["Lo que su cliente", "o su auditor revisa"]} />
+          <Heading label="Normas y marcos" lines={["Las normas que pide", "su cliente o auditor"]} />
         </div>
         <motion.div ref={track} style={{ x }} className="mt-12 flex w-max gap-4 px-5 md:px-10">
           {norms.map((n) => (
@@ -157,7 +157,7 @@ export function Principles() {
     <section ref={ref} className="relative border-t border-rule" style={{ height: `${principles.length * 70}svh` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center">
         <div className={wrap}>
-          <p className="label text-fog">Cómo nos comprometemos</p>
+          <p className="label text-fog">Nuestros compromisos</p>
           <div className="relative mt-8 min-h-[3.6em] text-[clamp(30px,5.4vw,80px)]">
             <AnimatePresence mode="wait">
               <motion.p
@@ -190,7 +190,7 @@ export function Differentiators() {
   return (
     <section className="py-20 md:py-28">
       <div className={wrap}>
-        <Heading lines={["Ingeniería y cumplimiento", "en la misma casa"]} />
+        <Heading lines={["Lo que cambia", "al trabajar con nosotros"]} />
         <div className="mt-14 grid border-t border-rule sm:grid-cols-2 lg:grid-cols-5">
           {differentiators.map((d, i) => (
             <Rise key={d.title} delay={i * 0.06} className="border-b border-rule py-7 sm:pr-8 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
@@ -210,7 +210,7 @@ export function Tools() {
   return (
     <section aria-labelledby="tools-title" className="overflow-hidden border-y border-rule py-14">
       <p id="tools-title" className={`${wrap} label text-fog`}>
-        Herramientas con las que trabajamos
+        Herramientas con las que construimos
       </p>
       <ul className="sr-only">
         {tools.map((t) => (
@@ -241,7 +241,7 @@ export function Process() {
     <section id="como" className="py-20 md:py-28">
       <div className={`${wrap} grid gap-14 lg:grid-cols-[1fr_1.4fr]`}>
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <Heading label="Cómo trabajamos" lines={["Primero la conversación,", "después el proyecto"]} />
+          <Heading label="Cómo trabajamos" lines={["Cómo trabajamos", "y qué recibe en cada paso"]} />
         </div>
         <ol ref={ref} className="relative">
           <span aria-hidden="true" className="absolute top-2 bottom-2 left-[7px] w-px bg-rule" />
@@ -268,7 +268,7 @@ export function Faq() {
   return (
     <section id="preguntas" className="py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
-        <Heading lines={["Lo que suelen", "preguntarnos"]} />
+        <Heading lines={["Lo que nos preguntan", "antes de contratar"]} />
         <div className="border-t border-rule">
           {faqs.map((f, i) => {
             const isOpen = open === i;

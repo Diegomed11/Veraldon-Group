@@ -4,8 +4,10 @@
 export const site = {
   name: "Veraldon",
   legalName: "Veraldon Group",
-  motto: "IA que funciona, es segura y cumple, y se puede demostrar.",
-  what: "Veraldon construye sistemas de IA, datos y software a la medida que funcionan, son seguros y pueden demostrarlo: cada entrega deja la evidencia que piden sus clientes, un banco o un auditor de ISO/IEC 27001 y 42001.",
+  motto: "Sistemas, datos e IA que funcionan y lo demuestran.",
+  what: "Veraldon construye el software, los datos y la IA con los que su empresa deja de recapturar, confía en sus números, pone IA a trabajar con resultados medidos y responde con evidencia cuando un cliente o un auditor la pide. Precio fijo en pesos. El código es suyo desde el primer día.",
+  description:
+    "Veraldon: software a la medida, datos, IA y seguridad para empresas medianas en México. Precio fijo en pesos, código suyo. Primera conversación sin costo.",
   email: "hola@veraldon.mx",
   city: "Ciudad de México",
   year: 2026,
@@ -29,12 +31,12 @@ export const serviceLines: ServiceLine[] = [
     slug: "sistemas-integracion",
     short: "Sistemas",
     title: "Sistemas a la medida e integración",
-    sub: "El software que genera, ordena y conecta los datos de su operación, diseñado sobre su proceso real.",
+    sub: "Deje de recapturar. Conectamos sus sistemas y automatizamos el trabajo manual, todo diseñado sobre cómo opera hoy su empresa.",
     items: [
       "Pedidos, inventarios, CRM, portales de clientes, expedientes y resultados",
-      "Conciliación y descarga de CFDI, reportes periódicos, cotizadores y documentos automáticos",
-      "Integración de ERP, facturación, tienda en línea, GPS y herramientas en la nube, sin recaptura",
-      "Tableros de indicadores por sucursal conectados directo a las fuentes",
+      "Conciliación y descarga de CFDI, reportes periódicos, cotizadores y documentos que se generan solos",
+      "Integración de ERP, facturación, tienda en línea, GPS y herramientas en la nube, sin recaptura entre sistemas",
+      "Tableros de indicadores por sucursal conectados directo a las fuentes, sin armar el reporte a mano",
     ],
     out: "Sistema en producción, código fuente, documentación, capacitación y garantía.",
     norms: ["ISO/IEC 27001"],
@@ -43,11 +45,11 @@ export const serviceLines: ServiceLine[] = [
     slug: "datos-infraestructura",
     short: "Datos",
     title: "Datos e infraestructura",
-    sub: "La base que toda solución de IA necesita: datos limpios, privados y a escala.",
+    sub: "Sepa de dónde sale cada dato y quién lo cambió. Datos limpios y privados, listos para reportes y para IA, anonimizados antes de salir a terceros.",
     items: [
       "Pipelines que anonimizan datos personales antes de enviarlos a proveedores externos, conforme a la LFPDPPP",
-      "Modelos de código abierto en servidores propios o en AWS, para empresas que no pueden enviar datos a la nube pública",
-      "Bases de datos analíticas y de búsqueda semántica (PostgreSQL, pgvector, ClickHouse)",
+      "Modelos de código abierto en sus servidores o en AWS, para empresas que no pueden enviar datos a la nube pública",
+      "Bases de datos analíticas y de búsqueda semántica: PostgreSQL, pgvector y ClickHouse",
       "Contratos de datos, calidad y linaje: saber de dónde viene cada dato y quién lo cambió",
     ],
     out: "Infraestructura documentada, pipelines en operación, arquitectura y manual.",
@@ -57,11 +59,11 @@ export const serviceLines: ServiceLine[] = [
     slug: "inteligencia-artificial",
     short: "IA",
     title: "Inteligencia artificial y conocimiento",
-    sub: "Modelos de lenguaje sobre los datos de su empresa, medidos antes de salir a producción.",
+    sub: "IA que responde con fuentes, se abstiene cuando no sabe y se mide antes de salir a producción.",
     items: [
-      "Asistente de conocimiento de alta precisión sobre documentos internos, con fuentes citadas",
-      "Asistentes de atención a clientes por chat o WhatsApp y extracción de datos de contratos, facturas y expedientes",
-      "Agentes que operan sus sistemas vía API, con identidad propia, permisos mínimos, límites de acción y gasto, registro de actividad y aprobación humana para acciones sensibles",
+      "Asistente de conocimiento sobre sus documentos internos, con fuentes citadas y abstención cuando no hay respuesta",
+      "Atención a clientes por chat o WhatsApp y extracción de datos de contratos, facturas y expedientes",
+      "Agentes que operan sus sistemas vía API: identidad propia, permisos mínimos, límites de acción y gasto, registro y aprobación humana en lo sensible",
       "Evaluación de modelos y pruebas de seguridad: alucinaciones, precisión, sesgo, inyección de instrucciones y fuga de datos",
     ],
     out: "Aplicación desplegada en su infraestructura, suite de evaluación, reporte de resultados, código y documentación.",
@@ -71,13 +73,13 @@ export const serviceLines: ServiceLine[] = [
     slug: "seguridad-gobernanza",
     short: "Seguridad",
     title: "Seguridad, gobernanza de IA e ingeniería de evidencia",
-    sub: "Preparación técnica para ISO/IEC 27001 y 42001: los controles viven en su infraestructura, no solo en documentos, y la evidencia se genera sola.",
+    sub: "Llegue a la auditoría con la evidencia lista. Los controles operan en su infraestructura, no solo en documentos, y la evidencia se genera sola.",
     items: [
-      "Análisis de brechas por requisito, matriz de riesgos y plan priorizado",
-      "Implementación técnica de accesos, respaldos, cifrado, registros, proveedores e incidentes, con políticas listas para auditoría",
-      "Paquete de evidencia de IA: AI-BOM, registro de modelos, pruebas mapeadas a OWASP, NIST y 42001, y evaluación de impacto ISO/IEC 42005",
+      "Brechas de ISO 27001 y 42001 por requisito, evaluación de impacto de la IA sobre las personas, matriz de riesgos y plan priorizado",
+      "Accesos, respaldos, cifrado, registros, proveedores y respuesta a incidentes configurados y monitoreados; políticas y procedimientos para auditoría",
+      "Evidencia de IA: inventario (AI-BOM), modelos y versiones, registros de operación y pruebas mapeadas a OWASP Top 10 for LLM, NIST AI RMF e ISO 42001",
       "Recolección continua de evidencias desde AWS, GitHub, Google Workspace o Microsoft 365, con tablero de cumplimiento para la dirección",
-      "Capacitación, preparación y acompañamiento en la auditoría de certificación, y mantenimiento anual",
+      "Capacitación a directivos y técnicos, preparación para la auditoría y mantenimiento anual con la evidencia al día",
     ],
     out: "Sistema de gestión documentado, operando y auditable, con el paquete de evidencia listo para el organismo certificador que usted elija.",
     norms: ["ISO/IEC 27001", "ISO/IEC 42001", "ISO/IEC 42005", "NIST AI RMF"],
@@ -88,17 +90,17 @@ export const starts = [
   {
     title: "Diagnóstico de IA en producción",
     weeks: "2 a 3 semanas",
-    text: "Para quien ya tiene un chatbot, un RAG o un agente y no sabe si es confiable ni cuánto cuesta por respuesta útil. Recibe un benchmark de calidad, pruebas de seguridad, costo y latencia, brechas, arquitectura objetivo y plan de puesta en producción.",
+    text: "Para quien tiene un chatbot, RAG o agente y nadie lo ha medido. Recibe benchmark de calidad (exactitud, fidelidad a fuentes, abstención, errores críticos), pruebas de seguridad (inyección, fuga de datos, permisos), costo y latencia, brechas, arquitectura objetivo y plan de puesta en producción.",
   },
   {
     title: "Diagnóstico técnico ISO 27001 + IA",
     weeks: "3 a 4 semanas",
-    text: "Para quien recibe cuestionarios de seguridad, auditorías de clientes o requisitos de la CNBV. Recibe inventario de sus sistemas de IA, brechas de ISO 27001 y 42001 por requisito, matriz de riesgos, evidencias disponibles frente a faltantes y plan de implementación.",
+    text: "Para quien recibe cuestionarios de seguridad, auditorías de clientes o requisitos de la CNBV. Recibe inventario de IA, brechas de 27001 y 42001 por requisito, matriz de riesgos, evaluación de impacto cuando la IA afecta a personas, evidencias disponibles frente a faltantes, plan y cotización.",
   },
   {
     title: "Sprint de automatización",
     weeks: "3 a 4 semanas",
-    text: "Para conciliaciones, captura, reportes o atención de primer nivel. Recibe un flujo en producción con integración, controles humanos y registro de actividad, comparado contra la línea base con criterios de aceptación acordados desde el inicio.",
+    text: "Para quien tiene un proceso manual caro y repetitivo: conciliaciones, captura, reportes, atención de primer nivel. Recibe un flujo en producción con integración, controles humanos y registro de actividad, medido contra el proceso actual con criterios de aceptación acordados desde el inicio.",
   },
 ];
 
@@ -106,20 +108,21 @@ export const offers = [
   {
     title: "Arnés de evidencia de IA",
     for: "Para empresas que ya tienen equipo de cumplimiento",
-    text: "Si ya cuenta con CISO u oficial de cumplimiento, resolvemos la parte pesada de ingeniería y usted conserva la relación con su auditor. Suites de evaluación y red teaming, AI-BOM, logs de inferencia y monitoreo de deriva, integrados a su pipeline: ningún cambio de modelo o prompt llega a producción sin pasar las pruebas.",
+    text: "Su equipo conserva la relación con su auditor; nosotros hacemos la parte pesada de ingeniería: evaluación y red teaming mapeados a OWASP Top 10 for LLM, NIST AI RMF e ISO 42001, AI-BOM, registros de inferencia y monitoreo de deriva. Recibe el arnés en su infraestructura, un primer reporte y, si lo desea, monitoreo mensual.",
   },
   {
     title: "Asistente de conocimiento de alta precisión",
-    for: "Prometemos números que usted puede verificar",
-    text: "Una IA sobre los documentos, datos y procesos de su empresa: responde con cita, se abstiene cuando no sabe y mejora con supervisión. Exactitud acordada por contrato, con un umbral típico de 95 % y cero errores críticos. Sus datos no salen de la empresa y el costo por respuesta útil se reporta cada mes.",
+    for: "Para quien consulta contratos y expedientes a mano",
+    text: "Una IA sobre los documentos y procesos de su empresa: responde con cita, se abstiene cuando no sabe y mejora con supervisión. Prometemos números verificables, no «cero alucinaciones»: exactitud pactada por contrato y medida con preguntas de su empresa, datos que no salen o salen anonimizados y costo por respuesta útil cada mes.",
   },
 ];
 
 export const audiences = [
-  { title: "Proveedores de software e IA", text: "Venden a bancos, aseguradoras y corporativos, y reciben cuestionarios de seguridad o auditorías de terceros." },
-  { title: "Fintech y empresas reguladas", text: "Deben demostrar controles ante la CNBV y sus socios." },
-  { title: "Centros de contacto y BPO", text: "Con clientes en Estados Unidos y que ya usan bots y agentes de voz." },
-  { title: "Empresas medianas de cualquier giro", text: "Con procesos manuales caros, o con IA en producción que nadie ha medido." },
+  { title: "Procesos a mano y sucursales sin conectar", text: "Laboratorios, clínicas, distribuidoras, escuelas y despachos que recapturan pedidos o mandan resultados en PDF. Lo resolvemos a precio fijo." },
+  { title: "Empresas con IA que nadie ha medido", text: "Compraron un chatbot o un agente y nadie sabe si responde bien ni cuánto cuesta por respuesta útil. Lo medimos y le decimos qué cambiar." },
+  { title: "Proveedores de software e IA", text: "Si vende a bancos, aseguradoras o corporativos y un cuestionario de seguridad frena el contrato, le decimos qué falta y lo resolvemos." },
+  { title: "Fintech y empresas reguladas por la CNBV", text: "La CNBV y los bancos le piden controles que un tercero revisa, y en papel no resisten. Los dejamos operando, no en PDF." },
+  { title: "Centros de contacto y BPO", text: "Sus bots y agentes de voz ya atienden al cliente de Estados Unidos. Le dejamos las pruebas y registros que ese cliente le pide." },
 ];
 
 export const norms = [
@@ -134,24 +137,24 @@ export const norms = [
 
 export const principles = [
   "Somos ingenieros, no vendedores de software.",
-  "Prometemos números que usted puede verificar, no «cero alucinaciones».",
+  "Prometemos números que usted puede verificar.",
   "Si el control no opera, no lo damos por cumplido.",
   "El código es suyo desde el primer día.",
 ];
 
 export const differentiators = [
-  { title: "Ingeniería y cumplimiento en la misma casa", text: "Quien construye el sistema es quien diseña sus controles." },
-  { title: "Evidencia técnica de IA lista para auditoría", text: "Pruebas, registros y reportes que un auditor puede revisar." },
-  { title: "Precio fijo en pesos", text: "Sin módulos ocultos ni renovaciones automáticas." },
-  { title: "El código es del cliente", text: "Código, documentación y datos son suyos desde el primer día." },
-  { title: "Sus datos son suyos", text: "Nunca se reutilizan ni se usan para entrenar modelos de terceros." },
+  { title: "Precio fijo en pesos", text: "Sabe cuánto paga antes de empezar. Sin módulos ocultos ni renovaciones automáticas." },
+  { title: "El código y los datos son suyos", text: "Código fuente, documentación y datos, propiedad de su empresa desde el primer día." },
+  { title: "Diseñado sobre su proceso real", text: "Antes de escribir código vemos cómo opera hoy su equipo y qué datos salen de la empresa." },
+  { title: "Soporte de quien lo construyó", text: "Garantía sobre lo entregado y, si lo desea, soporte directo del equipo que escribió el código." },
+  { title: "Evidencia que le vuelve a servir", text: "Cada entrega deja pruebas, registros y documentación para su cliente, su banco o su auditor." },
 ];
 
 export const steps = [
-  { title: "Conversación de 30 minutos", text: "Sin costo. Revisamos qué hace su gente a mano, qué datos salen de la empresa y quién le pide evidencia. Sale con una lista de brechas." },
-  { title: "Propuesta por escrito", text: "En cinco días hábiles: alcance, precio fijo, calendario por hitos y criterios de aceptación, para que nadie se lleve sorpresas." },
-  { title: "Entrega por hitos", text: "Entorno de pruebas, demostraciones en cada hito, documentación y capacitación. Los cambios de alcance se cotizan aparte." },
-  { title: "Garantía y acompañamiento", text: "Garantía sobre lo entregado y, si lo desea, soporte y mejoras mensuales para que lo construido siga funcionando y evolucione con su negocio." },
+  { title: "Conversación de 30 minutos", text: "Sin costo. Revisamos qué hace su gente a mano, qué datos salen de la empresa y, si aplica, quién le pide evidencia. Sale con una lista de brechas." },
+  { title: "Propuesta por escrito", text: "En cinco días hábiles: alcance, precio fijo en pesos, calendario por hitos y criterios de aceptación. Nadie se lleva sorpresas." },
+  { title: "Entrega por hitos", text: "Entorno de pruebas, demostración en cada hito, documentación y capacitación a su equipo. Los cambios de alcance se cotizan aparte." },
+  { title: "Garantía y acompañamiento", text: "Garantía sobre lo entregado. Si lo desea, soporte mensual directo de quien construyó el sistema." },
 ];
 
 export const notDone = [
@@ -177,23 +180,27 @@ export const tools = [
 
 export const faqs = [
   {
-    q: "¿Qué pasa en la conversación de 30 minutos?",
-    a: "Revisamos qué hace su gente a mano, qué datos salen de la empresa y quién le pide evidencia. No tiene costo y sale con una lista de brechas. Si conviene seguir, en cinco días hábiles recibe una propuesta por escrito.",
+    q: "¿Cuánto cuesta?",
+    a: "Precio fijo por alcance, en pesos mexicanos. Los diagnósticos y el sprint tienen alcance cerrado; un sistema a la medida se cotiza según giro, tamaño y complejidad. Lo recibe por escrito en cinco días hábiles y el monto no cambia, salvo que usted pida algo fuera del alcance, que se cotiza aparte.",
   },
   {
-    q: "¿Ustedes emiten el certificado?",
-    a: "No. No emitimos certificados ni realizamos auditorías: la certificación la emite un organismo independiente que usted elige, y la auditoría interna que pide la norma la realiza un auditor independiente. Nosotros dejamos el sistema de gestión operando y el paquete de evidencia listo.",
+    q: "¿Cuánto tiempo toma?",
+    a: "Los diagnósticos y el sprint de automatización duran de dos a cuatro semanas. Un sistema a la medida o un asistente de conocimiento se entrega por hitos, con calendario acordado en la propuesta y una demostración en cada hito.",
   },
   {
-    q: "¿Podemos usar modelos externos con datos de clientes?",
-    a: "Sí, si los datos personales se anonimizan o enmascaran antes de salir de su empresa, conforme a la LFPDPPP. Cuando no pueden salir, desplegamos modelos de código abierto en sus servidores o en AWS.",
+    q: "¿De quién es el código?",
+    a: "Suyo desde el primer día, junto con la documentación y los datos. Puede operarlo con su equipo sin depender de nosotros y sin renovaciones automáticas.",
   },
   {
-    q: "¿Cómo se cobra?",
-    a: "Precio fijo por alcance, cotizado después de la conversación según giro, tamaño y complejidad, sin módulos ocultos ni renovaciones automáticas. La auditoría de certificación la cobra aparte el organismo certificador que usted elija.",
+    q: "¿Qué pasa con nuestros datos?",
+    a: "Nunca se reutilizan en otros proyectos ni para entrenar modelos de terceros. Si los datos personales deben salir a un proveedor externo, se anonimizan antes, conforme a la LFPDPPP. Si no pueden salir, desplegamos modelos de código abierto en sus servidores o en AWS.",
   },
   {
-    q: "¿De quién es el código y qué pasa con nuestros datos?",
-    a: "El código fuente, la documentación y los datos son suyos desde el primer día. Sus datos nunca se reutilizan en otros proyectos ni para entrenar modelos de terceros.",
+    q: "¿Ustedes certifican?",
+    a: "No. La certificación la emite un organismo independiente que usted elige; nosotros no emitimos certificados ni realizamos auditorías. Lo que sí hacemos es dejar los controles operando y el paquete de evidencia listo para ese organismo.",
+  },
+  {
+    q: "¿Sirve si no tenemos IA?",
+    a: "Sí. Pedidos, inventarios, conciliación de CFDI, integración de ERP y facturación, tableros por sucursal: nada de eso necesita IA. Si un proceso le cuesta horas de su gente, es trabajo para nosotros. La evidencia que queda es un beneficio adicional, no un requisito.",
   },
 ];

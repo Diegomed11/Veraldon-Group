@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: `${site.legalName}: IA, datos y software con evidencia para ISO/IEC 27001 y 42001`,
     template: `%s | ${site.name}`,
   },
-  description: site.what,
+  description: site.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -83,12 +83,12 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3 }}
           className="label text-mist"
         >
-          Ingeniería de IA, datos y software con evidencia
+          Sistemas a la medida, datos e IA para empresas medianas en México
         </motion.p>
         <MaskLines
           as="h1"
           delay={0.45}
-          lines={["IA que funciona,", "es segura y cumple,", "y se puede demostrar."]}
+          lines={["Sistemas, datos e IA", "que funcionan", "y lo demuestran."]}
           className="display mt-7 text-[clamp(34px,6.4vw,92px)] text-platinum"
         />
         <motion.div
@@ -97,8 +97,8 @@ export function Hero() {
           transition={{ duration: 1, ease, delay: 1.15 }}
           className="mt-10 flex flex-col items-center gap-4"
         >
-          <PillLink href="#contacto">Agendar conversación de 30 minutos</PillLink>
-          <p className="text-sm text-fog">La primera conversación no tiene costo.</p>
+          <PillLink href="#contacto">Hablemos 30 minutos de su operación</PillLink>
+          <p className="text-sm text-fog">Sin costo. Respondemos el mismo día hábil.</p>
         </motion.div>
       </motion.div>
 

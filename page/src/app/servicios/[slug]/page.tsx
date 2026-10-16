@@ -68,8 +68,8 @@ export default async function ServicePage(props: PageProps<"/servicios/[slug]">)
             <p className="mt-4 text-lg">{line.out}</p>
           </div>
           <div>
-            <PillLink href="/#contacto">Agendar conversación de 30 minutos</PillLink>
-            <p className="mt-3 text-sm text-fog">La primera conversación no tiene costo.</p>
+            <PillLink href="/#contacto">Hablemos 30 minutos de su operación</PillLink>
+            <p className="mt-3 text-sm text-fog">Sin costo. Respondemos el mismo día hábil.</p>
           </div>
         </aside>
       </div>

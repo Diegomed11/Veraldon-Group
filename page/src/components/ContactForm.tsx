@@ -73,7 +73,7 @@ export function ContactForm() {
         <textarea
           name="message"
           rows={3}
-          placeholder="Por ejemplo: un banco nos pide evidencia de seguridad de nuestro asistente de IA."
+          placeholder="Ej. Recapturamos pedidos de cinco sucursales a mano, o un banco nos mandó un cuestionario de seguridad"
           className={field}
         />
       </label>
@@ -83,7 +83,7 @@ export function ContactForm() {
           type="submit"
           className="label h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85"
         >
-          Agendar conversación
+          Enviar mensaje
         </button>
         <p aria-live="polite" className="text-sm text-paper-ink/70">
           {error ? (

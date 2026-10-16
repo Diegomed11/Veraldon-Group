@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { LogoMark, Wordmark } from "@/components/Logo";
+import { Logo } from "@/components/Logo";
 import { setScrollLocked } from "@/components/SmoothScroll";
 import { serviceLines, site } from "@/content/site";
 
@@ -61,8 +61,7 @@ export function Header() {
             {open ? "Cerrar" : "Menú"}
           </button>
           <Link href="/" aria-label="Veraldon, inicio" onClick={() => setOpen(false)} className="flex items-center gap-3 text-platinum">
-            <LogoMark className="hidden h-6 w-6 sm:block" />
-            <Wordmark />
+            <Logo className="h-[18px] w-auto sm:h-5" />
           </Link>
           <span aria-hidden="true" />
         </div>

@@ -25,10 +25,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1440px] gap-12 rounded-[28px] bg-paper px-6 py-12 text-paper-ink md:px-14 md:py-20 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <p className="label text-paper-ink/60">Contacto</p>
-            <MaskLines lines={["Empecemos con", "30 minutos"]} className="display mt-5 text-[clamp(30px,4.4vw,64px)]" />
+            <MaskLines lines={["Cuéntenos qué proceso", "le quita más horas"]} className="display mt-5 text-[clamp(30px,4.4vw,64px)]" />
             <p className="mt-6 max-w-[42ch] text-lg text-paper-ink/75">
-              La primera conversación no tiene costo. Sale con una lista de brechas y, si conviene seguir, una propuesta por
-              escrito en cinco días hábiles.
+              Escríbanos con el nombre de su empresa y el proceso que más tiempo le quita: recaptura entre sucursales, conciliaciones, reportes, un chatbot que nadie ha medido o un cuestionario que no sabe cómo responder. Respondemos el mismo día hábil y la primera conversación no tiene costo.
             </p>
             <dl className="mt-10 grid gap-4 border-t border-paper-rule pt-6">
               <div>

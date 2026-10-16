@@ -32,7 +32,7 @@ export function Footer() {
     <footer ref={ref} className="relative overflow-hidden border-t border-rule bg-ground">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 pt-16 md:grid-cols-[1.2fr_1fr_1fr_1fr] md:px-10">
         <div className="flex flex-col gap-4">
-          <Logo />
+          <Logo className="h-6 w-auto" />
           <p className="max-w-[34ch] text-sm text-fog">{site.motto}</p>
         </div>
         {columns.map((c) => (
