@@ -5,9 +5,7 @@ import { serviceLines } from "@/content/site";
 import { LineVisual } from "@/components/home/LineVisual";
 import { MaskLines, PillLink, Rise } from "@/components/motion/primitives";
 
-// Las cuatro páginas se generan en el build; no hace falta validar navegación instantánea por parámetro.
-export const instant = false;
-
+// Las cuatro páginas se generan en el build.
 export function generateStaticParams() {
   return serviceLines.map((s) => ({ slug: s.slug }));
 }

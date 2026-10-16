@@ -1,0 +1,11 @@
+{
+  // Despliegue en Cloudflare Workers como sitio estático.
+  // Build: `npm run build` (genera `out/`). Despliegue: `npx wrangler deploy`.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "veraldon",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
