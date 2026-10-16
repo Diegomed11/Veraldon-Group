@@ -5,7 +5,7 @@
   "name": "veraldon",
   "compatibility_date": "2026-10-01",
   "build": {
-    "command": "npm ci --prefix page && npm run build --prefix page",
+    "command": "npm install --no-audit --no-fund --prefix page && npm run build --prefix page",
     "cwd": "."
   },
   "assets": {
