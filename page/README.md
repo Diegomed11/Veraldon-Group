@@ -1,6 +1,6 @@
 # Sitio web de Veraldon Group
 
-Sitio en línea: https://veraldon-group.diegomad473.workers.dev
+Sitio en línea: https://veraldon.com (también en https://veraldon-group.diegomad473.workers.dev)
 
 Next.js 16 (App Router), TypeScript y Tailwind CSS 4. Animaciones con `motion` y desplazamiento suave con `lenis`.
 

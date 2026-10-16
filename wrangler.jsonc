@@ -8,6 +8,11 @@
     "command": "npm install --no-audit --no-fund --prefix page && npm run build --prefix page",
     "cwd": "."
   },
+  // Dominio propio registrado en Cloudflare: el deploy lo conecta solo.
+  "routes": [
+    { "pattern": "veraldon.com", "custom_domain": true },
+    { "pattern": "www.veraldon.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./page/out",
     "not_found_handling": "404-page"
