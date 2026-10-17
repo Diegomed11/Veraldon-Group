@@ -31,12 +31,13 @@ for (const file of htmlFiles(OUT)) {
 
 const csp = [
   "default-src 'self'",
-  `script-src 'self' ${[...hashes].sort().join(" ")}`,
+  // Cloudflare Web Analytics inserta su script en cada página y envía las visitas a cloudflareinsights.com.
+  `script-src 'self' https://static.cloudflareinsights.com ${[...hashes].sort().join(" ")}`,
   // Las animaciones escriben estilos en línea; no se pueden autorizar por hash.
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://cloudflareinsights.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
