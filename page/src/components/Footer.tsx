@@ -61,7 +61,15 @@ export function Footer() {
         <span>
           © {site.year} {site.legalName}
         </span>
-        <span>No emitimos certificados ni realizamos auditorías.</span>
+        <span className="flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/privacidad" className="hover:text-platinum">
+            Aviso de privacidad
+          </Link>
+          <Link href="/terminos" className="hover:text-platinum">
+            Términos de uso
+          </Link>
+          <span>No emitimos certificados ni realizamos auditorías.</span>
+        </span>
       </div>
       <div aria-hidden="true" className="mt-6 overflow-hidden">
         <motion.p

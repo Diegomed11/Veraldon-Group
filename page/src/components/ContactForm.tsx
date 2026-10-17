@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { serviceLines, site, starts } from "@/content/site";
+import { privacySummary } from "@/content/legal";
 
 type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "error"; message: string };
 
@@ -124,6 +126,13 @@ export function ContactForm() {
           )}
         </p>
       </div>
+      <p className="text-xs leading-relaxed text-paper-ink/60 sm:col-span-2">
+        {privacySummary} Consulte el{" "}
+        <Link href="/privacidad" className="underline underline-offset-2 hover:text-paper-ink">
+          aviso de privacidad
+        </Link>
+        .
+      </p>
     </form>
   );
 }
