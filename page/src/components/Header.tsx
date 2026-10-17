@@ -123,9 +123,15 @@ export function Header() {
                 </div>
                 <div>
                   <p className="label text-fog">Contacto</p>
-                  <a href={`mailto:${site.email}`} className="mt-4 block text-lg text-mist hover:text-platinum">
-                    {site.email}
-                  </a>
+                  {site.email ? (
+                    <a href={`mailto:${site.email}`} className="mt-4 block text-lg text-mist hover:text-platinum">
+                      {site.email}
+                    </a>
+                  ) : (
+                    <Link href="/#contacto" onClick={() => setOpen(false)} className="mt-4 block text-lg text-mist hover:text-platinum">
+                      Formulario de contacto
+                    </Link>
+                  )}
                   <p className="mt-1 text-fog">{site.city}</p>
                 </div>
               </motion.div>

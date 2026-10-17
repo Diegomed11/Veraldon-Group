@@ -30,14 +30,16 @@ export default function Home() {
               Escríbanos con el nombre de su empresa y el proceso que más tiempo le quita: recaptura entre sucursales, conciliaciones, reportes, un chatbot que nadie ha medido o un cuestionario que no sabe cómo responder. Respondemos el mismo día hábil y la primera conversación no tiene costo.
             </p>
             <dl className="mt-10 grid gap-4 border-t border-paper-rule pt-6">
-              <div>
-                <dt className="label text-[11px] text-paper-ink/60">Correo</dt>
-                <dd className="mt-1 text-lg">
-                  <a href={`mailto:${site.email}`} className="underline-offset-4 hover:underline">
-                    {site.email}
-                  </a>
-                </dd>
-              </div>
+              {site.email && (
+                <div>
+                  <dt className="label text-[11px] text-paper-ink/60">Correo</dt>
+                  <dd className="mt-1 text-lg">
+                    <a href={`mailto:${site.email}`} className="underline-offset-4 hover:underline">
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              )}
               <div>
                 <dt className="label text-[11px] text-paper-ink/60">Ubicación</dt>
                 <dd className="mt-1 text-lg">{site.city}</dd>

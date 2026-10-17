@@ -51,9 +51,15 @@ export function Footer() {
         ))}
         <div>
           <p className="label text-fog">Contacto</p>
-          <a href={`mailto:${site.email}`} className="mt-4 block text-sm text-mist hover:text-platinum">
-            {site.email}
-          </a>
+          {site.email ? (
+            <a href={`mailto:${site.email}`} className="mt-4 block text-sm text-mist hover:text-platinum">
+              {site.email}
+            </a>
+          ) : (
+            <Link href="/#contacto" className="mt-4 block text-sm text-mist hover:text-platinum">
+              Formulario de contacto
+            </Link>
+          )}
           <p className="mt-2 text-sm text-fog">{site.city}</p>
         </div>
       </div>

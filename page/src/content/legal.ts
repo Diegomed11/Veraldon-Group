@@ -11,6 +11,9 @@ export const responsable = {
   email: site.email,
 };
 
+// Medio para que la gente contacte al responsable: el correo si existe; si no, el formulario del sitio.
+const contactChannel = responsable.email ? `escríbanos a ${responsable.email}` : "escríbanos por el formulario de contacto de este sitio (veraldon.com/#contacto)";
+
 export type LegalSection = { title: string; paragraphs?: string[]; items?: string[] };
 
 export const privacySummary = `${responsable.brand} usará sus datos solo para responder su mensaje y preparar, si la pide, una propuesta. No los vendemos ni los usamos para publicidad.`;
@@ -20,7 +23,7 @@ export const privacy: LegalSection[] = [
     title: "Quién es responsable de sus datos",
     paragraphs: [
       `${responsable.name}, quien opera la marca ${responsable.brand}, con domicilio en ${responsable.city}, es responsable del tratamiento de los datos personales que usted nos proporcione por este sitio, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.`,
-      `Para cualquier asunto relacionado con sus datos, escríbanos a ${responsable.email}.`,
+      `Para cualquier asunto relacionado con sus datos, ${contactChannel}.`,
     ],
   },
   {
@@ -61,7 +64,7 @@ export const privacy: LegalSection[] = [
   {
     title: "Sus derechos ARCO y cómo ejercerlos",
     paragraphs: [
-      `Usted puede acceder a sus datos, pedir que los corrijamos, solicitar que los eliminemos u oponerse a su uso (derechos ARCO), así como revocar su consentimiento o limitar el uso de sus datos. Para hacerlo, escriba a ${responsable.email} con el asunto «Derechos ARCO» e indique:`,
+      `Usted puede acceder a sus datos, pedir que los corrijamos, solicitar que los eliminemos u oponerse a su uso (derechos ARCO), así como revocar su consentimiento o limitar el uso de sus datos. Para hacerlo, ${contactChannel}, con la frase «Derechos ARCO» al inicio del mensaje, e indique:`,
     ],
     items: [
       "Su nombre y un medio para responderle.",
@@ -73,7 +76,7 @@ export const privacy: LegalSection[] = [
   {
     title: "Respuesta a su solicitud",
     paragraphs: [
-      "Le responderemos al mismo correo dentro de los plazos que establece la ley y, si su solicitud procede, la haremos efectiva en esos mismos plazos. Si considera que no atendimos su solicitud conforme a la ley, puede acudir a la autoridad en materia de protección de datos personales.",
+      "Le responderemos al correo que nos indique dentro de los plazos que establece la ley y, si su solicitud procede, la haremos efectiva en esos mismos plazos. Si considera que no atendimos su solicitud conforme a la ley, puede acudir a la autoridad en materia de protección de datos personales.",
     ],
   },
   {
@@ -138,7 +141,7 @@ export const terms: LegalSection[] = [
   {
     title: "Cambios y contacto",
     paragraphs: [
-      `Podemos actualizar estos términos; la versión vigente es la publicada en esta página. Para cualquier duda, escríbanos a ${responsable.email}.`,
+      `Podemos actualizar estos términos; la versión vigente es la publicada en esta página. Para cualquier duda, ${contactChannel}.`,
     ],
   },
 ];

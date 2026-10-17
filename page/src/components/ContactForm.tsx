@@ -53,7 +53,8 @@ export function ContactForm() {
       setStatus({ kind: "sent" });
     } catch (err) {
       const detail = err instanceof Error && err.message ? err.message : "No pudimos enviar su mensaje.";
-      setStatus({ kind: "error", message: `${detail} También puede escribirnos a ${site.email}.` });
+      const fallback = site.email ? ` También puede escribirnos a ${site.email}.` : " Intente de nuevo en unos minutos.";
+      setStatus({ kind: "error", message: detail.endsWith("minutos.") ? detail : `${detail}${fallback}` });
     }
   }
 
