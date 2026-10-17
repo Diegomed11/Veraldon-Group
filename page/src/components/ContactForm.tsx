@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { serviceLines, site, starts } from "@/content/site";
 
 type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "error"; message: string };
@@ -8,6 +8,11 @@ type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind
 // El formulario se envía al Worker del sitio (POST /api/contacto), que lo reenvía por correo al equipo.
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  // Momento en que el formulario quedó listo; el servidor descarta envíos hechos en menos de unos segundos.
+  const shownAt = useRef(0);
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -20,6 +25,7 @@ export function ContactForm() {
       topic: String(data.get("topic") ?? ""),
       message: String(data.get("message") ?? "").trim(),
       website: String(data.get("website") ?? ""),
+      elapsed: Date.now() - shownAt.current,
     };
 
     if (!payload.name || !payload.email) {
@@ -41,6 +47,7 @@ export function ContactForm() {
       const result = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (!res.ok || !result?.ok) throw new Error(result?.error ?? "");
       form.reset();
+      shownAt.current = Date.now();
       setStatus({ kind: "sent" });
     } catch (err) {
       const detail = err instanceof Error && err.message ? err.message : "No pudimos enviar su mensaje.";

@@ -13,9 +13,15 @@ interface SendEmail {
   send(message: import("cloudflare:email").EmailMessage): Promise<void>;
 }
 
+interface RateLimit {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
+}
+
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   CONTACTO: SendEmail;
+  CONTACT_PER_VISITOR: RateLimit;
+  CONTACT_OVERALL: RateLimit;
   // Secreto configurado en el panel de Cloudflare: buzón verificado que recibe el formulario.
   CONTACT_TO?: string;
 }

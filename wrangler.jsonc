@@ -22,5 +22,10 @@
     "run_worker_first": ["/api/*"]
   },
   // Envío del formulario con Email Routing. El destino (buzón verificado) va en el secreto CONTACT_TO.
-  "send_email": [{ "name": "CONTACTO", "allowed_sender_addresses": ["formulario@veraldon.com"] }]
+  "send_email": [{ "name": "CONTACTO", "allowed_sender_addresses": ["formulario@veraldon.com"] }],
+  // Límites del formulario: 3 envíos por minuto por visitante y 20 por minuto en total por región.
+  "ratelimits": [
+    { "name": "CONTACT_PER_VISITOR", "namespace_id": "4201", "simple": { "limit": 3, "period": 60 } },
+    { "name": "CONTACT_OVERALL", "namespace_id": "4202", "simple": { "limit": 20, "period": 60 } }
+  ]
 }

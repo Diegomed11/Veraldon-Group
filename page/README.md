@@ -24,3 +24,9 @@ El formulario de contacto envía los mensajes a `POST /api/contacto`, que atiend
 ## Despliegue
 
 Se publica en Cloudflare Workers desde la rama `main`. El `wrangler.jsonc` de la raíz del repositorio instala y compila el sitio en `page/` y sube `page/out` como archivos estáticos.
+
+## Seguridad
+
+- `npm run build` corre dos pasos después de `next build`: `scripts/flatten-segments.mjs` (corrige los nombres de prefetch de las páginas de servicio) y `scripts/security-headers.mjs`, que genera `out/_headers` con la política de contenido (CSP, con hash de cada script en línea), HSTS y los demás encabezados, y `worker/security.generated.ts` para las respuestas del Worker.
+- El formulario acepta solo envíos desde el propio sitio, en JSON y de hasta 16 KB; descarta bots con un campo trampa y un tiempo mínimo de llenado; y limita los envíos a 3 por minuto por visitante y 20 por minuto en total.
+- `/.well-known/security.txt` publica el contacto para reportar vulnerabilidades.
