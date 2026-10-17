@@ -1,8 +1,10 @@
 {
   // Configuración para que Cloudflare despliegue desde la raíz del repositorio sin ajustes en el panel:
-  // `npx wrangler deploy` instala y compila el sitio en `page/` y luego sube `page/out` como archivos estáticos.
+  // `npx wrangler deploy` instala y compila el sitio en `page/`, sube `page/out` como archivos estáticos
+  // y publica `page/worker`, que atiende el formulario de contacto en /api/contacto.
   "$schema": "./page/node_modules/wrangler/config-schema.json",
   "name": "veraldon",
+  "main": "./page/worker/index.ts",
   "compatibility_date": "2026-10-01",
   "build": {
     "command": "npm install --no-audit --no-fund --prefix page && npm run build --prefix page",
@@ -15,6 +17,10 @@
   ],
   "assets": {
     "directory": "./page/out",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Envío del formulario con Email Routing. El destino (buzón verificado) va en el secreto CONTACT_TO.
+  "send_email": [{ "name": "CONTACTO", "allowed_sender_addresses": ["formulario@veraldon.com"] }]
 }

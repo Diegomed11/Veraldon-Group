@@ -3,35 +3,49 @@
 import { useState } from "react";
 import { serviceLines, site, starts } from "@/content/site";
 
-// Sin servidor de correo todavía: el formulario prepara un correo en el cliente de correo del visitante.
-// Cuando haya un proveedor (Resend, Formspree, etc.), sustituir `handleSubmit` por una llamada a la API.
+type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "error"; message: string };
+
+// El formulario se envía al Worker del sitio (POST /api/contacto), que lo reenvía por correo al equipo.
 export function ContactForm() {
-  const [error, setError] = useState<string | null>(null);
-  const [opened, setOpened] = useState(false);
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const company = String(data.get("company") ?? "").trim();
-    const topic = String(data.get("topic") ?? "");
-    const message = String(data.get("message") ?? "").trim();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      company: String(data.get("company") ?? "").trim(),
+      topic: String(data.get("topic") ?? ""),
+      message: String(data.get("message") ?? "").trim(),
+      website: String(data.get("website") ?? ""),
+    };
 
-    if (!name || !email) {
-      setError("Escriba su nombre y un correo para que podamos responderle.");
+    if (!payload.name || !payload.email) {
+      setStatus({ kind: "error", message: "Escriba su nombre y un correo para que podamos responderle." });
       return;
     }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setError("El correo no parece válido. Revise que tenga el formato nombre@empresa.com.");
+    if (!/^\S+@\S+\.\S+$/.test(payload.email)) {
+      setStatus({ kind: "error", message: "El correo no parece válido. Revise que tenga el formato nombre@empresa.com." });
       return;
     }
-    setError(null);
 
-    const subject = `Conversación de 30 minutos para ${company || name}: ${topic}`;
-    const body = `Nombre: ${name}\nEmpresa: ${company}\nCorreo: ${email}\nInterés: ${topic}\n\n${message}`;
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setOpened(true);
+    setStatus({ kind: "sending" });
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (!res.ok || !result?.ok) throw new Error(result?.error ?? "");
+      form.reset();
+      setStatus({ kind: "sent" });
+    } catch (err) {
+      const detail = err instanceof Error && err.message ? err.message : "No pudimos enviar su mensaje.";
+      setStatus({ kind: "error", message: `${detail} También puede escribirnos a ${site.email}.` });
+    }
   }
 
   const label = "label text-[11px] text-paper-ink/70";
@@ -39,7 +53,14 @@ export function ContactForm() {
     "mt-2 w-full border-0 border-b border-paper-rule bg-transparent px-0 py-2.5 text-base text-paper-ink normal-case tracking-normal font-[family-name:var(--font-archivo)] placeholder:text-paper-ink/40 focus:border-paper-ink focus:outline-none focus:ring-0 transition-colors";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="grid gap-7 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} noValidate className="relative grid gap-7 sm:grid-cols-2">
+      {/* Campo trampa para bots: oculto a las personas y a los lectores de pantalla. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label>
+          No llene este campo
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <label className={label}>
         Nombre
         <input name="name" autoComplete="name" className={field} />
@@ -81,15 +102,16 @@ export function ContactForm() {
       <div className="flex flex-wrap items-center gap-5 sm:col-span-2">
         <button
           type="submit"
-          className="label h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85"
+          disabled={status.kind === "sending"}
+          className="label h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85 disabled:cursor-wait disabled:opacity-60"
         >
-          Enviar mensaje
+          {status.kind === "sending" ? "Enviando…" : "Enviar mensaje"}
         </button>
-        <p aria-live="polite" className="text-sm text-paper-ink/70">
-          {error ? (
-            <span className="text-[#a3271b]">{error}</span>
-          ) : opened ? (
-            <>Abrimos su programa de correo con el mensaje listo. Si no se abrió, escríbanos a {site.email}.</>
+        <p role="status" aria-live="polite" className="text-sm text-paper-ink/70">
+          {status.kind === "error" ? (
+            <span className="text-[#a3271b]">{status.message}</span>
+          ) : status.kind === "sent" ? (
+            <>Recibimos su mensaje. Le respondemos el mismo día hábil.</>
           ) : (
             <>Respondemos el mismo día hábil.</>
           )}

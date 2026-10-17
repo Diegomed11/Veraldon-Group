@@ -8,7 +8,8 @@ export const site = {
   what: "Veraldon construye el software, los datos y la IA con los que su empresa deja de recapturar, confía en sus números, pone IA a trabajar con resultados medidos y responde con evidencia cuando un cliente o un auditor la pide. Precio fijo en pesos. El código es suyo desde el primer día.",
   description:
     "Veraldon: software a la medida, datos, IA y seguridad para empresas medianas en México. Precio fijo en pesos, código suyo. Primera conversación sin costo.",
-  email: "hola@veraldon.mx",
+  // Dirección de Cloudflare Email Routing: reenvía al buzón del equipo, sin comprar correo.
+  email: "hola@veraldon.com",
   city: "Ciudad de México",
   year: 2026,
   // Pendientes: WhatsApp y LinkedIn. Mientras estén vacíos no se muestran.

@@ -19,7 +19,7 @@ Todo el texto está en `src/content/site.ts`: nombre, contacto, servicios, forma
 
 Pendientes: el número de WhatsApp y el perfil de LinkedIn (`phone` y `linkedin` en `site`). Mientras estén vacíos no se muestran.
 
-El formulario de contacto abre el programa de correo del visitante con el mensaje preparado. Para recibir los mensajes directamente, conecta un servicio de formularios o correo en `src/components/ContactForm.tsx`.
+El formulario de contacto envía los mensajes a `POST /api/contacto`, que atiende el Worker en `worker/index.ts`. El Worker los reenvía por correo con Cloudflare Email Routing, desde `formulario@veraldon.com` hacia el buzón guardado en el secreto `CONTACT_TO`, con el correo del visitante como dirección de respuesta. Para probarlo en local: `npm run build`, crear `.dev.vars` en la raíz del repositorio con `CONTACT_TO=alguien@ejemplo.com` y correr `npx --prefix page wrangler dev` desde la raíz; los correos quedan como archivos `.eml` en `.wrangler/tmp/email`.
 
 ## Despliegue
 
