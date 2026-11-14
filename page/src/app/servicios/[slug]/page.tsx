@@ -27,11 +27,11 @@ export default async function ServicePage(props: PageProps<"/servicios/[slug]">)
 
   return (
     <article>
-      <header className="relative min-h-[88svh] overflow-hidden border-b border-rule pt-[72px]">
+      <header className="relative min-h-[88svh] overflow-hidden border-b border-rule pt-[88px]">
         <div className="absolute inset-y-0 right-0 hidden w-[55%] opacity-70 lg:block">
           <LineVisual slug={line.slug} />
         </div>
-        <div className={`${wrap} relative flex min-h-[calc(88svh-72px)] flex-col justify-end pb-16`}>
+        <div className={`${wrap} relative flex min-h-[calc(88svh-88px)] flex-col justify-end pb-16`}>
           <Link href="/#servicios" className="label text-muted hover:text-ink">
             Todas las líneas
           </Link>

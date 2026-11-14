@@ -9,7 +9,7 @@ const wrap = "mx-auto max-w-[1440px] px-5 md:px-10";
 export function LegalPage({ title, intro, sections }: { title: string; intro: string; sections: LegalSection[] }) {
   return (
     <article>
-      <header className="border-b border-rule pt-[72px]">
+      <header className="border-b border-rule pt-[88px]">
         <div className={`${wrap} pt-20 pb-14 md:pt-28`}>
           <Link href="/" className="label text-muted hover:text-ink">
             Inicio

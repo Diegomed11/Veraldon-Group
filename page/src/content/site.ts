@@ -7,19 +7,50 @@ export const site = {
   motto: "Sistemas, datos e IA que funcionan y lo demuestran.",
   // El mismo lema partido en renglones para los titulares escalonados de la portada y del pie.
   mottoLines: ["Sistemas,", "datos e IA", "que funcionan", "y lo demuestran."],
-  // Textos de la portada. El primero es el lema; los otros tres acompañan al video conforme avanza
-  // con el scroll: los papeles se vuelven red, una señal la recorre y la red se vuelve cerebro.
-  heroBeats: [
-    { label: "Sistemas a la medida, datos e IA para empresas medianas en México", lines: ["Sistemas,", "datos e IA", "que funcionan", "y lo demuestran."] },
-    { label: "Sistemas e integración", lines: ["Lo que hoy vive", "en papeles", "se conecta."] },
-    { label: "Datos", lines: ["Cada dato deja", "un rastro", "que se puede seguir."] },
-    { label: "IA y conocimiento", lines: ["Y su conocimiento", "responde", "con fuentes."] },
+  // Portada. Cada escena acompaña una etapa del video conforme avanza el scroll y dice una cosa concreta:
+  // el problema que resolvemos y, después, lo que hace cada línea de servicio y lo que recibe el cliente.
+  heroScenes: [
+    {
+      name: "Veraldon",
+      kicker: "Sistemas a la medida, datos e IA",
+      lines: ["Lo que su empresa", "hace a mano,", "lo hace un sistema."],
+      text: "Construimos el software, los datos y la IA de su operación. Le dejamos la prueba de que funcionan. Precio fijo en pesos y el código es suyo desde el primer día.",
+      href: "",
+    },
+    {
+      name: "Sistemas",
+      kicker: "Sistemas a la medida e integración",
+      lines: ["Sus sistemas", "se hablan entre sí."],
+      text: "Pedidos, inventarios, facturación y CRM conectados. Lo que hoy se recaptura entre sucursales pasa solo, sobre la forma en que ya opera su empresa.",
+      href: "/servicios/sistemas-integracion",
+    },
+    {
+      name: "Datos",
+      kicker: "Datos e infraestructura",
+      lines: ["Sabe de dónde sale", "cada número."],
+      text: "Datos limpios y con rastro: de dónde vienen y quién los cambió. Listos para sus reportes, y anonimizados antes de salir a un proveedor.",
+      href: "/servicios/datos-infraestructura",
+    },
+    {
+      name: "IA",
+      kicker: "Inteligencia artificial y conocimiento",
+      lines: ["Una IA que responde", "con fuentes."],
+      text: "Contesta sobre los documentos de su empresa, cita de dónde lo sacó y se abstiene cuando no sabe. Se mide antes de salir a producción.",
+      href: "/servicios/inteligencia-artificial",
+    },
+    {
+      name: "Evidencia",
+      kicker: "Seguridad, gobernanza de IA y evidencia",
+      lines: ["Llega a la auditoría", "con la evidencia lista."],
+      text: "Controles de ISO 27001 y 42001 operando en su infraestructura, no solo en documentos. La certificación la otorga el organismo que usted elija.",
+      href: "/servicios/seguridad-gobernanza",
+    },
   ],
-  // Titular de la sección que sigue a la portada; resume el primer beneficio de `what`.
-  whatLines: ["Su empresa deja", "de recapturar", "y confía en", "sus números"],
-  what: "Veraldon construye el software, los datos y la IA con los que su empresa deja de recapturar, confía en sus números, pone IA a trabajar con resultados medidos y responde con evidencia cuando un cliente o un auditor la pide. Precio fijo en pesos. El código es suyo desde el primer día.",
+  // Sección que sigue a la portada: quiénes somos y cómo trabajamos, en tres verbos.
+  whatLines: ["Construimos.", "Medimos.", "Lo dejamos", "demostrado."],
+  what: "Veraldon es una consultora de ingeniería en Ciudad de México. Diseñamos sobre la forma en que hoy trabaja su equipo, construimos por hitos con una demostración en cada uno y entregamos con pruebas, registros y documentación que puede mostrarle a su cliente, a su banco o a su auditor. Precio fijo en pesos. El código es suyo desde el primer día.",
   description:
-    "Veraldon: software a la medida, datos, IA y seguridad para empresas medianas en México. Precio fijo en pesos, código suyo. Primera conversación sin costo.",
+    "Veraldon construye software a la medida, datos, IA y seguridad para su empresa. Precio fijo en pesos y código suyo. La primera conversación no tiene costo.",
   // Sin correo público por ahora: el contacto es el formulario del sitio.
   // Cuando haya buzón, poner aquí la dirección y volverá a mostrarse donde corresponde.
   email: "",
@@ -104,16 +135,19 @@ export const starts = [
   {
     title: "Diagnóstico de IA en producción",
     weeks: "2 a 3 semanas",
+    lead: "Sepa si su IA responde bien antes de que lo note un cliente.",
     text: "Para quien tiene un chatbot, RAG o agente y nadie lo ha medido. Recibe benchmark de calidad (exactitud, fidelidad a fuentes, abstención, errores críticos), pruebas de seguridad (inyección, fuga de datos, permisos), costo y latencia, brechas, arquitectura objetivo y plan de puesta en producción.",
   },
   {
     title: "Diagnóstico técnico ISO 27001 + IA",
     weeks: "3 a 4 semanas",
+    lead: "Sepa qué le falta para pasar la auditoría o el cuestionario de su cliente.",
     text: "Para quien recibe cuestionarios de seguridad, auditorías de clientes o requisitos de la CNBV. Recibe inventario de IA, brechas de 27001 y 42001 por requisito, matriz de riesgos, evaluación de impacto cuando la IA afecta a personas, evidencias disponibles frente a faltantes, plan y cotización.",
   },
   {
     title: "Sprint de automatización",
     weeks: "3 a 4 semanas",
+    lead: "Un proceso manual menos, funcionando y medido contra el de hoy.",
     text: "Para quien tiene un proceso manual caro y repetitivo: conciliaciones, captura, reportes, atención de primer nivel. Recibe un flujo en producción con integración, controles humanos y registro de actividad, medido contra el proceso actual con criterios de aceptación acordados desde el inicio.",
   },
 ];

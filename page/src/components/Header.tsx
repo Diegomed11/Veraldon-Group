@@ -31,7 +31,7 @@ export function Header() {
 
   const measure = () => {
     const hero = document.querySelector("[data-dark-hero]");
-    setOverDark(!!hero && hero.getBoundingClientRect().bottom > 72);
+    setOverDark(!!hero && hero.getBoundingClientRect().bottom > 88);
   };
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -62,18 +62,23 @@ export function Header() {
           open || overDark ? "tone-dark bg-transparent" : solid ? "bg-ground/95 backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-10">
-          <Link href="/" aria-label="Veraldon, inicio" onClick={() => setOpen(false)} className="flex items-center">
-            <Logo className="h-[18px] w-auto sm:h-5" />
+        <div className="mx-auto grid h-[76px] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-[88px] md:px-10">
+          <Link href="/#contacto" onClick={() => setOpen(false)} className="label hidden justify-self-start text-ink underline-offset-8 hover:underline md:block">
+            Contacto
+          </Link>
+          <span aria-hidden="true" className="md:hidden" />
+          <Link href="/" aria-label="Veraldon, inicio" onClick={() => setOpen(false)} className="flex items-center justify-self-center">
+            <Logo className="h-[22px] w-auto sm:h-7 md:h-8" />
           </Link>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="menu"
-            className="label flex min-h-11 items-center gap-3 text-ink"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            className="label flex min-h-11 items-center gap-3 justify-self-end text-ink"
           >
-            {open ? "Cerrar" : "Menú"}
+            <span className="hidden md:inline">{open ? "Cerrar" : "Menú"}</span>
             <span aria-hidden="true" className="relative block h-3 w-6">
               <span className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0.5"}`} />
               <span className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 -rotate-45" : "top-2.5"}`} />

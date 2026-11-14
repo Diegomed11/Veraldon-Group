@@ -33,11 +33,11 @@ export function Services() {
         <p className="label text-muted">Servicios</p>
         <MaskLines
           stagger
-          lines={["Cuatro líneas de trabajo", "que contrata solas o juntas"]}
+          lines={["Empiece por donde", "más le urge"]}
           className="display mt-6 text-[clamp(26px,3.6vw,54px)]"
         />
         <p className="mt-8 max-w-[52ch] text-lg text-soft">
-          Desde el pedido que hoy se recaptura hasta la IA que atiende a sus clientes. Todas dejan evidencia reutilizable: inventario, pruebas, registros y arquitectura.
+          Son cuatro líneas de trabajo y se contratan solas o juntas. Todas terminan igual: un sistema funcionando y la evidencia de que funciona, lista para su cliente o su auditor.
         </p>
 
         <div

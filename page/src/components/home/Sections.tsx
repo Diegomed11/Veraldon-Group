@@ -22,7 +22,7 @@ function Heading({ label, lines, className = "" }: { label?: string; lines: stri
 export function Statement({ text }: { text: string }) {
   return (
     <section className={`${wrap} py-28 md:py-44`}>
-      <p className="label text-right text-ink">Qué hacemos</p>
+      <p className="label text-right text-ink">Quiénes somos</p>
       <ScrollLines lines={site.whatLines} className="display mt-10 text-[clamp(24px,6.4vw,100px)] md:mt-16" />
       <div className="mt-14 grid md:mt-24 md:grid-cols-2">
         <Rise className="md:col-start-2">
@@ -38,7 +38,7 @@ export function Starts() {
   return (
     <section id="empezar" className="pt-24 pb-4 md:pt-36">
       <div className={wrap}>
-        <Heading label="Formas de empezar" lines={["Tres formas de empezar", "con alcance y precio fijos"]} />
+        <Heading label="Formas de empezar" lines={["Empiece en semanas,", "con alcance y precio fijos"]} />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
           {starts.map((s, i) => (
             <Rise key={s.title} delay={i * 0.08} className="h-full">
@@ -49,7 +49,8 @@ export function Starts() {
                 />
                 <p className="label relative text-muted">{s.weeks}</p>
                 <h3 className="title relative mt-5 text-[clamp(22px,2vw,30px)]">{s.title}</h3>
-                <p className="relative mt-4 mb-8 text-soft">{s.text}</p>
+                <p className="relative mt-4 text-lg leading-snug text-ink">{s.lead}</p>
+                <p className="relative mt-4 mb-8 text-[15px] text-soft">{s.text}</p>
                 <span aria-hidden="true" className="relative mt-auto block h-px w-full origin-left scale-x-[0.2] bg-ink transition-transform duration-700 group-hover:scale-x-100" />
               </article>
             </Rise>
@@ -83,7 +84,7 @@ export function Audiences() {
   return (
     <section className="border-t border-rule py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
-        <Heading lines={["Para quién", "construimos"]} />
+        <Heading lines={["Si esto le suena,", "trabajamos para usted"]} />
         <ul className="border-t border-rule">
           {audiences.map((a, i) => (
             <motion.li

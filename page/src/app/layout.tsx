@@ -15,7 +15,7 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.legalName}: IA, datos y software con evidencia para ISO/IEC 27001 y 42001`,
+    default: `${site.legalName}: sistemas a la medida, datos e IA que funcionan y lo demuestran`,
     template: `%s | ${site.name}`,
   },
   description: site.description,

@@ -20,7 +20,7 @@ export function setScrollLocked(locked: boolean) {
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const instance = new Lenis({ duration: 1.15, anchors: { offset: -72 } });
+    const instance = new Lenis({ duration: 1.15, anchors: { offset: -88 } });
     lenis = instance;
     let id = requestAnimationFrame(function raf(t) {
       instance.raf(t);
