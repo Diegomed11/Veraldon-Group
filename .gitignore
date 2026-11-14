@@ -1,2 +1,5 @@
 .dev.vars
 .wrangler/
+
+# Clips y cuadros originales del video de la portada (pesados; al sitio solo van las versiones optimizadas)
+video-fuente/

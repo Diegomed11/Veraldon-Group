@@ -36,6 +36,9 @@ const csp = [
   // Las animaciones escriben estilos en línea; no se pueden autorizar por hash.
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
+  // El video de la portada se baja completo y se reproduce desde memoria (una URL `blob:`), para que
+  // el scroll pueda recorrerlo sin depender de peticiones por rangos al servidor.
+  "media-src 'self' blob:",
   "font-src 'self'",
   "connect-src 'self' https://cloudflareinsights.com",
   "object-src 'none'",

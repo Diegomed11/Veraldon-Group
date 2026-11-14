@@ -3,13 +3,13 @@
 import { motion } from "motion/react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const stroke = { fill: "none", stroke: "#eceef0", strokeWidth: 1 } as const;
+const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 1 } as const;
 const view = { once: true, margin: "0px 0px -20% 0px" } as const;
 
 // Dibujos de línea para cada servicio. Se trazan cuando la tarjeta entra en pantalla.
 export function LineVisual({ slug }: { slug: string }) {
   return (
-    <svg viewBox="0 0 600 600" aria-hidden="true" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 600 600" aria-hidden="true" className="absolute inset-0 h-full w-full text-ink" preserveAspectRatio="xMidYMid meet">
       {slug === "sistemas-integracion" && <Systems />}
       {slug === "datos-infraestructura" && <Data />}
       {slug === "inteligencia-artificial" && <Ai />}
@@ -104,7 +104,7 @@ function Data() {
         x="270"
         width="60"
         height="18"
-        fill="#eceef0"
+        fill="currentColor"
         fillOpacity={0.14}
         animate={{ y: [120, 462, 120] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -166,7 +166,7 @@ function Security() {
               width="16"
               height="16"
               rx="3"
-              fill="#eceef0"
+              fill="currentColor"
               initial={{ opacity: 0, scale: 0.4 }}
               whileInView={{ opacity: 0.85, scale: 1 }}
               viewport={view}

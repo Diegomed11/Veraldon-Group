@@ -5,6 +5,18 @@ export const site = {
   name: "Veraldon",
   legalName: "Veraldon Group",
   motto: "Sistemas, datos e IA que funcionan y lo demuestran.",
+  // El mismo lema partido en renglones para los titulares escalonados de la portada y del pie.
+  mottoLines: ["Sistemas,", "datos e IA", "que funcionan", "y lo demuestran."],
+  // Textos de la portada. El primero es el lema; los otros tres acompañan al video conforme avanza
+  // con el scroll: los papeles se vuelven red, una señal la recorre y la red se vuelve cerebro.
+  heroBeats: [
+    { label: "Sistemas a la medida, datos e IA para empresas medianas en México", lines: ["Sistemas,", "datos e IA", "que funcionan", "y lo demuestran."] },
+    { label: "Sistemas e integración", lines: ["Lo que hoy vive", "en papeles", "se conecta."] },
+    { label: "Datos", lines: ["Cada dato deja", "un rastro", "que se puede seguir."] },
+    { label: "IA y conocimiento", lines: ["Y su conocimiento", "responde", "con fuentes."] },
+  ],
+  // Titular de la sección que sigue a la portada; resume el primer beneficio de `what`.
+  whatLines: ["Su empresa deja", "de recapturar", "y confía en", "sus números"],
   what: "Veraldon construye el software, los datos y la IA con los que su empresa deja de recapturar, confía en sus números, pone IA a trabajar con resultados medidos y responde con evidencia cuando un cliente o un auditor la pide. Precio fijo en pesos. El código es suyo desde el primer día.",
   description:
     "Veraldon: software a la medida, datos, IA y seguridad para empresas medianas en México. Precio fijo en pesos, código suyo. Primera conversación sin costo.",

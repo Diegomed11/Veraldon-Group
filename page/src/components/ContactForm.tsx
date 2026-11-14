@@ -58,9 +58,9 @@ export function ContactForm() {
     }
   }
 
-  const label = "label text-[11px] text-paper-ink/70";
+  const label = "label text-[11px] text-muted";
   const field =
-    "mt-2 w-full border-0 border-b border-paper-rule bg-transparent px-0 py-2.5 text-base text-paper-ink normal-case tracking-normal font-[family-name:var(--font-archivo)] placeholder:text-paper-ink/40 focus:border-paper-ink focus:outline-none focus:ring-0 transition-colors";
+    "mt-2 w-full border-0 border-b border-rule bg-transparent px-0 py-2.5 text-base font-normal text-ink normal-case tracking-normal font-[family-name:var(--font-archivo)] [font-stretch:100%] placeholder:text-muted/70 focus:border-ink focus:outline-none focus:ring-0 transition-colors";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="relative grid gap-7 sm:grid-cols-2">
@@ -113,13 +113,13 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status.kind === "sending"}
-          className="label h-11 rounded-full bg-paper-ink px-7 text-paper transition-opacity hover:opacity-85 disabled:cursor-wait disabled:opacity-60"
+          className="label btn-notch disabled:cursor-wait disabled:opacity-60"
         >
           {status.kind === "sending" ? "Enviando…" : "Enviar mensaje"}
         </button>
-        <p role="status" aria-live="polite" className="text-sm text-paper-ink/70">
+        <p role="status" aria-live="polite" className="text-sm text-muted">
           {status.kind === "error" ? (
-            <span className="text-[#a3271b]">{status.message}</span>
+            <span className="text-[#ff7a6b]">{status.message}</span>
           ) : status.kind === "sent" ? (
             <>Recibimos su mensaje. Le respondemos el mismo día hábil.</>
           ) : (
@@ -127,9 +127,9 @@ export function ContactForm() {
           )}
         </p>
       </div>
-      <p className="text-xs leading-relaxed text-paper-ink/60 sm:col-span-2">
+      <p className="text-xs leading-relaxed text-muted sm:col-span-2">
         {privacySummary} Consulte el{" "}
-        <Link href="/privacidad" className="underline underline-offset-2 hover:text-paper-ink">
+        <Link href="/privacidad" className="underline underline-offset-2 hover:text-ink">
           aviso de privacidad
         </Link>
         .

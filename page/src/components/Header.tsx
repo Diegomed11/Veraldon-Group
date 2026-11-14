@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Logo } from "@/components/Logo";
 import { setScrollLocked } from "@/components/SmoothScroll";
@@ -17,18 +18,33 @@ const nav = [
   { href: "/#contacto", label: "Contacto" },
 ];
 
-// Barra centrada con el nombre, "Menú" a la izquierda y menú a pantalla completa (adaptado de "Navigation Menu" de 21st.dev).
+// Barra mínima: el logo a la izquierda y "Menú" a la derecha. El menú abre a pantalla completa
+// sobre negro, con las secciones en el mismo titular grande del sitio.
 export function Header() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
+  // Mientras la barra está encima de la portada oscura del inicio va en blanco y sin fondo.
+  const [overDark, setOverDark] = useState(false);
+  const pathname = usePathname();
   const { scrollY } = useScroll();
+
+  const measure = () => {
+    const hero = document.querySelector("[data-dark-hero]");
+    setOverDark(!!hero && hero.getBoundingClientRect().bottom > 72);
+  };
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
     setHidden(y > prev && y > 240);
     setSolid(y > 40);
+    measure();
   });
+
+  useEffect(() => {
+    const id = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(id);
+  }, [pathname]);
 
   useEffect(() => {
     setScrollLocked(open);
@@ -43,27 +59,26 @@ export function Header() {
         animate={{ y: hidden && !open ? "-100%" : "0%" }}
         transition={{ duration: 0.6, ease }}
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-          solid && !open ? "bg-ground/80 backdrop-blur-md" : "bg-transparent"
+          open || overDark ? "tone-dark bg-transparent" : solid ? "bg-ground/95 backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <div className="mx-auto grid h-[72px] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:px-10">
+        <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-10">
+          <Link href="/" aria-label="Veraldon, inicio" onClick={() => setOpen(false)} className="flex items-center">
+            <Logo className="h-[18px] w-auto sm:h-5" />
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="menu"
-            className="label flex items-center gap-3 justify-self-start text-platinum"
+            className="label flex min-h-11 items-center gap-3 text-ink"
           >
-            <span aria-hidden="true" className="relative block h-3 w-5">
-              <span className={`absolute left-0 h-px w-5 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0.5"}`} />
-              <span className={`absolute left-0 h-px w-5 bg-current transition-transform duration-500 ${open ? "top-1.5 -rotate-45" : "top-2.5"}`} />
-            </span>
             {open ? "Cerrar" : "Menú"}
+            <span aria-hidden="true" className="relative block h-3 w-6">
+              <span className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0.5"}`} />
+              <span className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${open ? "top-1.5 -rotate-45" : "top-2.5"}`} />
+            </span>
           </button>
-          <Link href="/" aria-label="Veraldon, inicio" onClick={() => setOpen(false)} className="flex items-center gap-3 text-platinum">
-            <Logo className="h-[18px] w-auto sm:h-5" />
-          </Link>
-          <span aria-hidden="true" />
         </div>
       </motion.header>
 
@@ -78,13 +93,13 @@ export function Header() {
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.8, ease }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-panel"
+            className="tone-dark fixed inset-0 z-40 overflow-y-auto"
           >
-            <div className="mx-auto grid min-h-full max-w-[1440px] gap-12 px-5 pt-28 pb-10 md:grid-cols-[1.4fr_1fr] md:px-10 md:pt-36">
+            <div className="mx-auto grid min-h-full max-w-[1440px] gap-12 px-5 pt-28 pb-10 md:grid-cols-[1.6fr_1fr] md:px-10 md:pt-36">
               <nav aria-label="Principal">
                 <ul>
                   {nav.map((item, i) => (
-                    <li key={item.href} className="overflow-hidden border-b border-rule">
+                    <li key={item.href} className="overflow-hidden">
                       <motion.div
                         initial={{ y: "100%" }}
                         animate={{ y: "0%" }}
@@ -93,10 +108,9 @@ export function Header() {
                         <Link
                           href={item.href}
                           onClick={() => setOpen(false)}
-                          className="display group flex items-center justify-between py-4 text-[clamp(28px,4.4vw,56px)] text-mist transition-colors hover:text-platinum"
+                          className="display block py-2 text-[clamp(30px,5.4vw,76px)] text-muted transition-colors duration-500 hover:text-ink md:py-3"
                         >
                           {item.label}
-                          <span aria-hidden="true" className="h-px w-0 bg-platinum transition-all duration-500 group-hover:w-16" />
                         </Link>
                       </motion.div>
                     </li>
@@ -110,11 +124,11 @@ export function Header() {
                 className="flex flex-col gap-10 md:pt-4"
               >
                 <div>
-                  <p className="label text-fog">Líneas de servicio</p>
+                  <p className="label text-muted">Líneas de servicio</p>
                   <ul className="mt-4 grid gap-2">
                     {serviceLines.map((s) => (
                       <li key={s.slug}>
-                        <Link href={`/servicios/${s.slug}`} onClick={() => setOpen(false)} className="text-lg text-mist hover:text-platinum">
+                        <Link href={`/servicios/${s.slug}`} onClick={() => setOpen(false)} className="text-lg text-soft hover:text-ink">
                           {s.title}
                         </Link>
                       </li>
@@ -122,17 +136,17 @@ export function Header() {
                   </ul>
                 </div>
                 <div>
-                  <p className="label text-fog">Contacto</p>
+                  <p className="label text-muted">Contacto</p>
                   {site.email ? (
-                    <a href={`mailto:${site.email}`} className="mt-4 block text-lg text-mist hover:text-platinum">
+                    <a href={`mailto:${site.email}`} className="mt-4 block text-lg text-soft hover:text-ink">
                       {site.email}
                     </a>
                   ) : (
-                    <Link href="/#contacto" onClick={() => setOpen(false)} className="mt-4 block text-lg text-mist hover:text-platinum">
+                    <Link href="/#contacto" onClick={() => setOpen(false)} className="mt-4 block text-lg text-soft hover:text-ink">
                       Formulario de contacto
                     </Link>
                   )}
-                  <p className="mt-1 text-fog">{site.city}</p>
+                  <p className="mt-1 text-muted">{site.city}</p>
                 </div>
               </motion.div>
             </div>

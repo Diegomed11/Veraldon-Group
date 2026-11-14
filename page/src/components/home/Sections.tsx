@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
-import { audiences, differentiators, faqs, norms, notDone, offers, principles, starts, steps, tools } from "@/content/site";
-import { MaskLines, Rise, ScrollWords } from "@/components/motion/primitives";
+import { audiences, differentiators, faqs, norms, notDone, offers, principles, site, starts, steps, tools } from "@/content/site";
+import { MaskLines, Rise, ScrollLines } from "@/components/motion/primitives";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const wrap = "mx-auto max-w-[1440px] px-5 md:px-10";
@@ -12,21 +12,28 @@ const wrap = "mx-auto max-w-[1440px] px-5 md:px-10";
 function Heading({ label, lines, className = "" }: { label?: string; lines: string[]; className?: string }) {
   return (
     <div className={className}>
-      {label && <p className="label mb-5 text-fog">{label}</p>}
-      <MaskLines lines={lines} className="display text-[clamp(28px,4.2vw,60px)]" />
+      {label && <p className="label mb-6 text-muted">{label}</p>}
+      <MaskLines stagger lines={lines} className="display text-[clamp(26px,3.6vw,54px)]" />
     </div>
   );
 }
 
+// Lo que hace Veraldon: un titular enorme que se oscurece línea por línea y, debajo, la explicación completa.
 export function Statement({ text }: { text: string }) {
   return (
     <section className={`${wrap} py-28 md:py-44`}>
-      <ScrollWords text={text} className="display max-w-[30ch] text-[clamp(24px,3.4vw,50px)] leading-[1.15]" />
+      <p className="label text-right text-ink">Qué hacemos</p>
+      <ScrollLines lines={site.whatLines} className="display mt-10 text-[clamp(24px,6.4vw,100px)] md:mt-16" />
+      <div className="mt-14 grid md:mt-24 md:grid-cols-2">
+        <Rise className="md:col-start-2">
+          <p className="max-w-[52ch] text-lg text-soft">{text}</p>
+        </Rise>
+      </div>
     </section>
   );
 }
 
-// Tres formas de empezar en vitrina vertical, como la galería de modelos.
+// Tres formas de empezar, en columnas separadas por líneas finas.
 export function Starts() {
   return (
     <section id="empezar" className="pt-24 pb-4 md:pt-36">
@@ -35,17 +42,15 @@ export function Starts() {
         <div className="mt-14 grid gap-4 md:grid-cols-3">
           {starts.map((s, i) => (
             <Rise key={s.title} delay={i * 0.08} className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-rule bg-panel p-7 md:p-8">
+              <article className="group relative flex h-full flex-col overflow-hidden border border-rule bg-panel p-7 md:p-8">
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_39px,rgba(236,238,240,0.05)_39px_40px)] transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                  className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_39px,color-mix(in_srgb,var(--ink)_6%,transparent)_39px_40px)] transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                 />
-                <p className="label relative text-fog">{s.weeks}</p>
-                <h3 className="display relative mt-5 text-[clamp(22px,2vw,30px)]">{s.title}</h3>
-                <p className="relative mt-4 mb-8 text-mist">
-                  {s.text}
-                </p>
-                <span aria-hidden="true" className="relative mt-auto block h-px w-full origin-left scale-x-[0.2] bg-platinum transition-transform duration-700 group-hover:scale-x-100" />
+                <p className="label relative text-muted">{s.weeks}</p>
+                <h3 className="title relative mt-5 text-[clamp(22px,2vw,30px)]">{s.title}</h3>
+                <p className="relative mt-4 mb-8 text-soft">{s.text}</p>
+                <span aria-hidden="true" className="relative mt-auto block h-px w-full origin-left scale-x-[0.2] bg-ink transition-transform duration-700 group-hover:scale-x-100" />
               </article>
             </Rise>
           ))}
@@ -63,10 +68,10 @@ export function Offers() {
         <Rise key={o.title} delay={i * 0.08}>
           <article className="grid gap-4 border-t border-rule py-10 md:grid-cols-[1fr_1.3fr] md:gap-12 md:py-14">
             <div>
-              <p className="text-fog">{o.for}</p>
-              <h3 className="display mt-3 text-[clamp(24px,2.8vw,40px)]">{o.title}</h3>
+              <p className="text-muted">{o.for}</p>
+              <h3 className="title mt-3 text-[clamp(24px,2.8vw,40px)]">{o.title}</h3>
             </div>
-            <p className="max-w-[58ch] text-lg text-mist md:pt-9">{o.text}</p>
+            <p className="max-w-[58ch] text-lg text-soft md:pt-9">{o.text}</p>
           </article>
         </Rise>
       ))}
@@ -89,8 +94,8 @@ export function Audiences() {
               transition={{ duration: 0.9, ease, delay: i * 0.07 }}
               className="group grid gap-2 border-b border-rule py-7 md:grid-cols-[1fr_1.2fr] md:gap-10"
             >
-              <h3 className="display text-[22px] transition-transform duration-500 group-hover:translate-x-2">{a.title}</h3>
-              <p className="text-mist">{a.text}</p>
+              <h3 className="title text-[22px] transition-transform duration-500 group-hover:translate-x-2">{a.title}</h3>
+              <p className="text-soft">{a.text}</p>
             </motion.li>
           ))}
         </ul>
@@ -115,29 +120,29 @@ export function Norms() {
   }, []);
 
   return (
-    <section id="normas" ref={ref} className="relative bg-ground" style={{ height: `calc(100svh + ${distance}px)` }}>
+    <section id="normas" ref={ref} className="tone-dark relative" style={{ height: `calc(100svh + ${distance}px)` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
         <div className={wrap}>
           <Heading label="Normas y marcos" lines={["Las normas que pide", "su cliente o auditor"]} />
         </div>
         <motion.div ref={track} style={{ x }} className="mt-12 flex w-max gap-4 px-5 md:px-10">
           {norms.map((n) => (
-            <article key={n.code} className="flex h-[340px] w-[300px] shrink-0 flex-col rounded-[24px] border border-rule bg-panel p-7 md:h-[380px] md:w-[360px]">
-              <p className="display text-[clamp(24px,2.4vw,32px)] leading-tight">{n.code}</p>
-              <p className="label mt-3 text-fog">{n.title}</p>
-              <p className="mt-auto text-mist">{n.text}</p>
+            <article key={n.code} className="flex h-[340px] w-[300px] shrink-0 flex-col border border-rule bg-panel p-7 md:h-[380px] md:w-[360px]">
+              <p className="display text-[clamp(22px,2.2vw,30px)]">{n.code}</p>
+              <p className="label mt-3 text-muted">{n.title}</p>
+              <p className="mt-auto text-soft">{n.text}</p>
             </article>
           ))}
-          <article className="flex h-[340px] w-[300px] shrink-0 flex-col justify-end rounded-[24px] bg-paper p-7 text-paper-ink md:h-[380px] md:w-[360px]">
+          <article className="tone-light flex h-[340px] w-[300px] shrink-0 flex-col justify-end p-7 md:h-[380px] md:w-[360px]">
             <p className="label">Lo que no hacemos</p>
             <ul className="mt-4 grid gap-2">
               {notDone.map((t) => (
-                <li key={t} className="display text-[20px] leading-snug">
+                <li key={t} className="title text-[20px]">
                   {t}
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm">La certificación la otorga un organismo independiente que usted elige.</p>
+            <p className="mt-4 text-sm text-soft">La certificación la otorga un organismo independiente que usted elige.</p>
           </article>
         </motion.div>
       </div>
@@ -154,11 +159,11 @@ export function Principles() {
   const bar = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={ref} className="relative border-t border-rule" style={{ height: `${principles.length * 70}svh` }}>
+    <section ref={ref} className="relative" style={{ height: `${principles.length * 70}svh` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center">
         <div className={wrap}>
-          <p className="label text-fog">Nuestros compromisos</p>
-          <div className="relative mt-8 min-h-[3.6em] text-[clamp(30px,5.4vw,80px)]">
+          <p className="label text-muted">Nuestros compromisos</p>
+          <div className="relative mt-8 min-h-[4em] text-[clamp(28px,5.6vw,84px)]">
             <AnimatePresence mode="wait">
               <motion.p
                 key={active}
@@ -166,7 +171,7 @@ export function Principles() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -40, filter: "blur(8px)" }}
                 transition={{ duration: 0.7, ease }}
-                className="display max-w-[20ch]"
+                className="display max-w-[16em]"
               >
                 {principles[active]}
               </motion.p>
@@ -178,7 +183,7 @@ export function Principles() {
             ))}
           </ul>
           <div className="mt-12 h-px w-full max-w-md bg-rule" aria-hidden="true">
-            <motion.div style={{ width: bar }} className="h-px bg-platinum" />
+            <motion.div style={{ width: bar }} className="h-px bg-ink" />
           </div>
         </div>
       </div>
@@ -188,14 +193,14 @@ export function Principles() {
 
 export function Differentiators() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="border-t border-rule py-20 md:py-28">
       <div className={wrap}>
         <Heading lines={["Lo que cambia", "al trabajar con nosotros"]} />
         <div className="mt-14 grid border-t border-rule sm:grid-cols-2 lg:grid-cols-5">
           {differentiators.map((d, i) => (
             <Rise key={d.title} delay={i * 0.06} className="border-b border-rule py-7 sm:pr-8 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
               <h3 className="text-lg font-medium">{d.title}</h3>
-              <p className="mt-2 text-fog">{d.text}</p>
+              <p className="mt-2 text-muted">{d.text}</p>
             </Rise>
           ))}
         </div>
@@ -204,12 +209,12 @@ export function Differentiators() {
   );
 }
 
-// Banda de herramientas, solo las que nombra el catálogo (adaptado de los "Marquees" de 21st.dev).
+// Banda de herramientas sobre negro, solo las que nombra el catálogo (adaptado de los "Marquees" de 21st.dev).
 export function Tools() {
   const row = [...tools, ...tools];
   return (
-    <section aria-labelledby="tools-title" className="overflow-hidden border-y border-rule py-14">
-      <p id="tools-title" className={`${wrap} label text-fog`}>
+    <section aria-labelledby="tools-title" className="tone-dark overflow-hidden py-16">
+      <p id="tools-title" className={`${wrap} label text-muted`}>
         Herramientas con las que construimos
       </p>
       <ul className="sr-only">
@@ -220,9 +225,9 @@ export function Tools() {
       <div aria-hidden="true" className="relative mt-8 [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
         <div className="marquee flex w-max items-center gap-14 hover:[animation-play-state:paused]">
           {row.map((t, i) => (
-            <span key={i} className="display flex items-center gap-14 text-[clamp(28px,3.6vw,52px)] whitespace-nowrap text-mist">
+            <span key={i} className="title flex items-center gap-14 text-[clamp(28px,3.6vw,52px)] whitespace-nowrap text-soft">
               {t}
-              <span className="block h-2 w-2 rotate-45 border border-fog" />
+              <span className="block h-2 w-2 rotate-45 border border-muted" />
             </span>
           ))}
         </div>
@@ -245,14 +250,14 @@ export function Process() {
         </div>
         <ol ref={ref} className="relative">
           <span aria-hidden="true" className="absolute top-2 bottom-2 left-[7px] w-px bg-rule" />
-          <motion.span aria-hidden="true" style={{ height }} className="absolute top-2 left-[7px] w-px bg-platinum" />
+          <motion.span aria-hidden="true" style={{ height }} className="absolute top-2 left-[7px] w-px bg-ink" />
           {steps.map((s, i) => (
             <li key={s.title} className="relative pb-16 pl-12 last:pb-0">
-              <span aria-hidden="true" className="absolute top-2 left-0 h-[15px] w-[15px] rounded-full border border-platinum bg-ground" />
-              <p className="label text-fog">Paso {i + 1}</p>
-              <MaskLines as="h3" lines={[s.title]} className="display mt-3 text-[clamp(22px,2.4vw,34px)]" />
+              <span aria-hidden="true" className="absolute top-2 left-0 h-[15px] w-[15px] rounded-full border border-ink bg-ground" />
+              <p className="label text-muted">Paso {i + 1}</p>
+              <MaskLines as="h3" lines={[s.title]} className="title mt-3 text-[clamp(22px,2.4vw,34px)]" />
               <Rise delay={0.1}>
-                <p className="mt-3 max-w-[46ch] text-mist">{s.text}</p>
+                <p className="mt-3 max-w-[46ch] text-soft">{s.text}</p>
               </Rise>
             </li>
           ))}
@@ -266,7 +271,7 @@ export function Process() {
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="preguntas" className="py-20 md:py-28">
+    <section id="preguntas" className="border-t border-rule py-20 md:py-28">
       <div className={`${wrap} grid gap-12 lg:grid-cols-[1fr_1.6fr]`}>
         <Heading lines={["Lo que nos preguntan", "antes de contratar"]} />
         <div className="border-t border-rule">
@@ -283,8 +288,8 @@ export function Faq() {
                   >
                     {f.q}
                     <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
-                      <span className="absolute top-1/2 left-0 h-px w-4 bg-platinum" />
-                      <span className={`absolute top-0 left-1/2 h-4 w-px bg-platinum transition-transform duration-500 ${isOpen ? "scale-y-0" : ""}`} />
+                      <span className="absolute top-1/2 left-0 h-px w-4 bg-ink" />
+                      <span className={`absolute top-0 left-1/2 h-4 w-px bg-ink transition-transform duration-500 ${isOpen ? "scale-y-0" : ""}`} />
                     </span>
                   </button>
                 </h3>
@@ -297,7 +302,7 @@ export function Faq() {
                       transition={{ duration: 0.6, ease }}
                       className="overflow-hidden"
                     >
-                      <p className="max-w-[62ch] pb-7 text-mist">{f.a}</p>
+                      <p className="max-w-[62ch] pb-7 text-soft">{f.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
